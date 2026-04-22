@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memorial de Ideias · Aula 3 · INTEGRA</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a2e4a;--ink-mid:#3d5166;--ink-soft:#7a8fa6;
+  --paper:#faf8f4;--paper-warm:#f3ede3;--paper-mid:#e8e0d2;
+  --gold:#b8962e;--gold-l:#fbf5e6;--gold-b:#d4aa45;
+  --blue:#2d5fa6;--blue-l:#dce8f8;--blue-b:#4a7bc4;
+  --teal:#1d7a6e;--teal-l:#d0eeea;
+  --coral:#c4522a;--coral-l:#fae6dd;
+  --purple:#5c3d8f;--purp-l:#ede8f8;--purp-b:#7b5ab8;
+  --green:#2a7a4b;--green-l:#d8f0e4;
+  --red:#a32020;--red-l:#fce8e8;
+  --line:rgba(26,46,74,0.1);--line-mid:rgba(26,46,74,0.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;font-size:16px}
+
+/* ── layout ── */
+.page{max-width:740px;margin:0 auto;padding:3rem 2rem 6rem}
+
+/* ── typography ── */
+h1{font-family:'Lora',serif;font-size:2rem;font-weight:400;color:var(--ink);line-height:1.25;margin:3.5rem 0 1rem}
+h2{font-family:'DM Sans',sans-serif;font-size:1.15rem;font-weight:500;color:var(--blue);margin:2rem 0 .75rem}
+h3{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;color:var(--ink-mid);margin:1.5rem 0 .5rem;text-transform:uppercase;letter-spacing:.08em}
+p{color:var(--ink-mid);font-size:15px;line-height:1.8;margin-bottom:1rem;text-align:justify}
+ul,ol{padding-left:1.4rem;margin-bottom:1rem}
+li{color:var(--ink-mid);font-size:15px;line-height:1.75;margin-bottom:.35rem}
+
+/* ── cover ── */
+.cover{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid var(--line);margin-bottom:3rem}
+.cover-kicker{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.75rem}
+.cover-title{font-family:'Lora',serif;font-size:2.8rem;font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:.5rem}
+.cover-sub{font-size:1.1rem;color:var(--gold);font-weight:500;margin-bottom:.5rem}
+.cover-meta{font-size:13px;color:var(--ink-soft);margin-top:.75rem}
+.gold-rule{width:60px;height:3px;background:var(--gold);margin:.75rem auto}
+
+/* ── callout blocks ── */
+.callout{border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1.25rem 0;border-left:4px solid var(--blue)}
+.callout.gold{border-left-color:var(--gold);background:var(--gold-l)}
+.callout.blue{border-left-color:var(--blue);background:var(--blue-l)}
+.callout.teal{border-left-color:var(--teal);background:var(--teal-l)}
+.callout.coral{border-left-color:var(--coral);background:var(--coral-l)}
+.callout.purple{border-left-color:var(--purple);background:var(--purp-l)}
+.callout-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.callout.gold .callout-label{color:var(--gold)}
+.callout.blue .callout-label{color:var(--blue)}
+.callout.teal .callout-label{color:var(--teal)}
+.callout.coral .callout-label{color:var(--coral)}
+.callout.purple .callout-label{color:var(--purple)}
+.callout p{margin:0;text-align:left}
+.callout p+p{margin-top:.5rem}
+
+/* ── quote ── */
+.quote-box{border-left:4px solid var(--gold);background:var(--gold-l);padding:1.1rem 1.4rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.quote-text{font-family:'Lora',serif;font-size:15px;color:var(--ink-mid);font-style:italic;line-height:1.75;margin-bottom:.4rem}
+.quote-attr{font-size:12px;font-weight:500;color:var(--gold);text-transform:uppercase;letter-spacing:.07em}
+
+/* ── paradigm grid ── */
+.paradigm-grid{display:grid;grid-template-columns:1fr;gap:.75rem;margin:1.25rem 0}
+.paradigm-card{border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.3rem;background:white}
+.paradigm-card.quant{border-top:4px solid var(--blue)}
+.paradigm-card.qual{border-top:4px solid var(--teal)}
+.paradigm-card.mista{border-top:4px solid var(--coral)}
+.paradigm-title{font-size:13px;font-weight:500;margin-bottom:.35rem}
+.paradigm-card.quant .paradigm-title{color:var(--blue)}
+.paradigm-card.qual .paradigm-title{color:var(--teal)}
+.paradigm-card.mista .paradigm-title{color:var(--coral)}
+.paradigm-card p{font-size:13px;margin:0;text-align:left}
+
+/* ── bloom pyramid ── */
+.bloom-wrap{margin:1.5rem 0}
+.bloom-row{display:flex;align-items:stretch;gap:6px;margin-bottom:5px}
+.bloom-num{width:32px;flex-shrink:0;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:white}
+.bloom-content{flex:1;border-radius:6px;padding:.65rem 1rem;display:flex;flex-direction:column;justify-content:center}
+.bloom-level{font-size:13px;font-weight:500;margin-bottom:2px}
+.bloom-verbs{font-size:12px;opacity:.85}
+.bloom-zone{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.b1{background:#7FB3D3}.b2{background:#5EA98A}.b3{background:#E8A24A}.b4{background:#D46B3A}.b5{background:#C0444A}.b6{background:#7B4EA0}
+.bc1{background:#EBF4FA;color:#2d5f7a}.bc2{background:#E5F4EE;color:#1a5c3a}.bc3{background:#FDF3E5;color:#7a4a10}.bc4{background:#FAE8DF;color:#7a2a10}.bc5{background:#FAE0E0;color:#7a1515}.bc6{background:#EDE8F8;color:#3a1a70}
+.bloom-legend{display:flex;gap:1rem;margin-top:.75rem;flex-wrap:wrap}
+.bloom-legend-item{display:flex;align-items:center;gap:.4rem;font-size:12px;color:var(--ink-soft)}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+
+/* ── prompt box ── */
+.prompt-box{background:var(--gold-l);border:1px solid var(--gold-b);border-radius:8px;padding:1.1rem 1.3rem;margin:1.25rem 0}
+.prompt-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+.prompt-text{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink-mid);line-height:1.7;font-style:italic}
+
+/* ── section divider ── */
+.section-rule{border:none;border-top:1px solid var(--line);margin:3rem 0}
+.section-num{font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.25rem}
+.sec-marker{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
+.sec-marker::before{content:"";display:block;width:28px;height:2px;background:var(--gold)}
+.sec-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);display:block}
+.sec-marker::after{content:"";display:block;flex:1;height:1px;background:var(--line)}
+
+/* ── tools table ── */
+.tools-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:13px}
+.tools-table th{background:var(--ink);color:white;padding:.65rem .85rem;text-align:left;font-weight:500;font-size:12px}
+.tools-table td{padding:.6rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-mid);line-height:1.55}
+.tools-table tr:nth-child(even) td{background:var(--paper-warm)}
+.tools-table th:first-child,.tools-table td:first-child{font-weight:500;color:var(--ink)}
+
+/* ── review table ── */
+.review-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:13px}
+.review-table th{background:var(--ink);color:white;padding:.65rem .85rem;text-align:left;font-weight:500;font-size:12px}
+.review-table td{padding:.6rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-mid);line-height:1.55}
+.review-table tr:nth-child(even) td{background:var(--paper-warm)}
+
+/* ═══════════════════════════════════════
+   GAME SHARED STYLES
+═══════════════════════════════════════ */
+.game-container{background:white;border:1.5px solid var(--purple);border-radius:12px;padding:1.75rem;margin:2rem 0;overflow:hidden}
+.game-kicker{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:.4rem}
+.game-title{font-family:'Lora',serif;font-size:1.3rem;font-weight:500;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
+.game-intro{font-size:13px;color:var(--ink-mid);line-height:1.65;margin-bottom:1.25rem;font-style:italic;border-bottom:1px solid var(--line);padding-bottom:1rem}
+.game-screen{display:none}.game-screen.on{display:block;animation:gfu .3s ease}
+@keyframes gfu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.g-prog-row{display:flex;align-items:center;gap:8px;margin-bottom:1.25rem}
+.g-prog-track{flex:1;height:2px;background:var(--paper-mid);border-radius:1px}
+.g-prog-fill{height:2px;background:var(--purple);border-radius:1px;transition:width .45s}
+.g-prog-lbl{font-size:11px;color:var(--ink-soft);white-space:nowrap}
+.g-narrator{background:var(--paper-warm);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:.75rem .95rem;font-size:13px;color:var(--ink-mid);font-style:italic;line-height:1.6;margin-bottom:1rem}
+.g-q{font-family:'Lora',serif;font-size:15px;color:var(--ink);line-height:1.6;margin-bottom:1rem}
+.g-qlabel{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.4rem}
+.g-opt{display:block;width:100%;background:white;border:1px solid var(--line-mid);border-radius:8px;padding:.8rem 1rem .8rem 2.4rem;margin-bottom:.4rem;cursor:pointer;text-align:left;font-size:13px;color:var(--ink);line-height:1.5;position:relative;transition:background .12s,border-color .12s;font-family:'DM Sans',sans-serif}
+.g-opt:before{content:attr(data-l);position:absolute;left:.85rem;top:50%;transform:translateY(-50%);font-size:11px;font-weight:500;color:var(--ink-soft)}
+.g-opt:hover:not(:disabled){background:var(--paper-warm);border-color:var(--ink-soft)}
+.g-opt.right{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.g-opt.right:before{color:var(--green)}
+.g-opt.wrong{background:var(--red-l);border-color:var(--red);color:var(--red)}
+.g-opt.wrong:before{color:var(--red)}
+.g-opt.show-right{background:var(--green-l);border-color:var(--green);color:var(--green);opacity:.5}
+.g-opt.show-right:before{color:var(--green)}
+.g-fb{margin-top:.9rem;padding:.85rem 1rem;border-radius:8px;background:var(--paper-warm);border-left:3px solid var(--line);display:none}
+.g-fb.on{display:block;animation:gfu .3s ease}
+.g-fb.ok{border-left-color:var(--green)}
+.g-fb.no{border-left-color:var(--red)}
+.g-fb-head{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.g-fb.ok .g-fb-head{color:var(--green)}
+.g-fb.no .g-fb-head{color:var(--red)}
+.g-fb-body{font-size:13px;color:var(--ink-mid);line-height:1.65}
+.g-fb-action{margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:13px;color:var(--ink);line-height:1.65;font-style:italic}
+.g-reflect{background:white;border:1px solid var(--line-mid);border-radius:8px;padding:1rem 1.2rem;margin-top:.9rem;display:none}
+.g-reflect.on{display:block;animation:gfu .35s ease}
+.g-reflect-lbl{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--purple);margin-bottom:.4rem}
+.g-reflect-q{font-family:'Lora',serif;font-size:14px;color:var(--ink);line-height:1.65;margin-bottom:.65rem}
+.g-textarea{width:100%;border:1px solid var(--line-mid);border-radius:7px;padding:.7rem .9rem;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:var(--paper);resize:vertical;min-height:68px;outline:none;line-height:1.6;transition:border-color .15s}
+.g-textarea:focus{border-color:var(--purple)}
+.g-textarea::placeholder{color:var(--ink-soft)}
+.g-nav{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
+.g-btn{background:white;border:1px solid var(--line-mid);border-radius:6px;padding:.5rem 1rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);transition:background .12s}
+.g-btn:hover{background:var(--paper-warm)}
+.g-btn-p{background:var(--purple);color:white;border-color:var(--purple)}
+.g-btn-p:hover{background:var(--purp-b);border-color:var(--purp-b)}
+.g-world-card{border:1px solid var(--line-mid);border-radius:9px;padding:1rem 1.2rem;margin-bottom:.5rem;cursor:pointer;background:white;transition:border-color .15s,background .15s}
+.g-world-card:hover{border-color:var(--ink-soft);background:var(--paper-warm)}
+.g-world-card.chosen{border-color:var(--purple);background:var(--purp-l)}
+.g-world-name{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:.25rem}
+.g-world-voice{font-size:13px;color:var(--ink-mid);font-style:italic;line-height:1.55}
+.g-result-score{font-family:'Lora',serif;font-size:2.5rem;color:var(--ink);margin-bottom:.2rem}
+.g-result-msg{font-size:14px;color:var(--ink-mid);line-height:1.7;margin:1rem 0}
+.g-diary-item{padding:.5rem 0;border-top:1px solid var(--line)}
+.g-diary-lbl{font-size:11px;color:var(--ink-soft);margin-bottom:2px}
+.g-diary-txt{font-size:13px;color:var(--ink-mid);font-style:italic;line-height:1.5}
+.g-score-row{margin-bottom:.7rem}
+.g-score-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-soft);margin-bottom:3px}
+.g-score-track{height:4px;background:var(--paper-mid);border-radius:2px;overflow:hidden}
+.g-score-fill{height:4px;border-radius:2px;transition:width .7s}
+.sf-q{background:var(--blue)}.sf-l{background:var(--teal)}.sf-m{background:var(--coral)}
+.g-outro{background:var(--paper-warm);border:1px solid var(--paper-mid);border-radius:8px;padding:1rem 1.2rem;margin-top:1rem}
+.g-outro-lbl{font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.4rem}
+.g-outro-txt{font-family:'Lora',serif;font-size:14px;color:var(--ink);line-height:1.7}
+.g-sum-row{display:flex;align-items:flex-start;gap:.5rem;padding:.4rem 0;border-top:1px solid var(--line);font-size:12px;color:var(--ink-mid)}
+.g-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:3px}
+.g-dot-ok{background:var(--green)}.g-dot-no{background:var(--red)}
+.chip{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-bottom:.5rem;letter-spacing:.05em;text-transform:uppercase}
+.chip-b{background:var(--blue-l);color:var(--blue)}
+.chip-t{background:var(--teal-l);color:var(--teal)}
+.chip-p{background:var(--purp-l);color:var(--purple)}
+.chip-g{background:var(--paper-mid);color:var(--ink-mid)}
+
+/* ── footer ── */
+.footer{text-align:center;padding:2rem 0 0;border-top:1px solid var(--line);margin-top:4rem;font-size:13px;color:var(--ink-soft)}
+.footer-close{font-family:'Lora',serif;font-size:1.1rem;color:var(--ink);font-style:italic;margin-bottom:.5rem}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ══════════════ CAPA ══════════════ -->
+<div class="cover">
+  <p class="cover-kicker">INTEGRA · IA + Escrita Acadêmica · Aula 3</p>
+  <h1 class="cover-title" style="margin-top:.5rem">Memorial de Ideias</h1>
+  <div class="gold-rule"></div>
+  <p class="cover-sub">Utilização da IA para Revisão Sistemática da Literatura</p>
+  <p class="cover-meta">18 de abril de 2026 · MUST University · 497 participantes</p>
+</div>
+
+<!-- ══════════════ INTRO ══════════════ -->
+<p>Eram 8h10 da manhã, horário da Flórida (9h10 no Brasil), em um sábado. Quatrocentos e noventa e sete pessoas abriram seus computadores, celulares, tablets — e ficaram. Por algumas horas, o curso <strong>INTEGRA: IA + Escrita Acadêmica</strong> reuniu mestrandos, doutorandos e pesquisadores em torno de uma questão que raramente recebe resposta honesta: como, de fato, se constrói uma pesquisa científica com rigor, com identidade e com a inteligência artificial como aliada — não como atalho?</p>
+<p>Este documento não é uma transcrição. É um memorial — um registro vivo das ideias mais potentes que atravessaram aquela manhã. Se você não estava lá, é um convite. Se você estava, é uma provocação para ir mais fundo.</p>
+
+<hr class="section-rule">
+
+<!-- ══════════════ I ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>O Pesquisador antes da Ferramenta</h1>
+
+<p>Antes de qualquer discussão sobre IA ou metodologia, a professora Rosemary colocou no centro da conversa algo que costuma ficar fora dos tutoriais: quem é o pesquisador?</p>
+
+<div class="quote-box">
+  <p class="quote-text">"A gente nunca faz pesquisa daquilo que nunca viu na vida. Nós somos sujeitos com repertório. A IA faz o trabalho braçal. Quem entrega conhecimento é o pesquisador."</p>
+  <p class="quote-attr">— Prof.ª Rosemary Trabold Nicácio, durante a aula</p>
+</div>
+
+<p>A inteligência artificial — chamada ao longo das aulas simplesmente de IA — é apresentada como uma extensão cognitiva do pesquisador, não como sua substituição. Ela otimiza o que é enfadonho. Ela não pensa pelo pesquisador.</p>
+<p>A originalidade não é escrever sobre um tema inédito. É o seu modo único de desvelar o mundo — porque o caminho que você percorreu, o repertório que acumulou, as experiências que moldaram sua pergunta de pesquisa são irreproduzíveis. Nenhuma IA tem isso. Você tem.</p>
+
+<div class="quote-box">
+  <p class="quote-text">"A chave para a excelência acadêmica na era digital reside, portanto, na postura do pesquisador em se assumir como o grande orquestrador final de seu trabalho, utilizando a inteligência artificial não como um atalho imprudente, mas como a mais poderosa aliada estratégica na expansão contínua das fronteiras do conhecimento humano."</p>
+  <p class="quote-attr">— Prof.ª Lana Paula Crivelaro Monteiro de Almeida, e-book INTEGRA</p>
+</div>
+
+<div class="callout gold">
+  <p class="callout-label">Para refletir antes de continuar</p>
+  <p>Qual é o seu repertório sobre o seu tema? O que você viveu, estudou ou observou que ninguém mais observou exatamente do mesmo lugar que você? Escreva isso antes de abrir qualquer ferramenta de IA.</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- ══════════════ II ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>O Mundo como Você o Vê: Ontologia e Epistemologia sem Jargão</h1>
+
+<p>O professor Ernandes dedicou parte significativa da aula a dois conceitos que assustam pelo nome, mas que na prática são perguntas que qualquer pesquisador precisa responder sobre si mesmo.</p>
+<p><strong>Antes de ler os conceitos, experiencie-os.</strong> O jogo a seguir apresenta quatro dilemas concretos. Não há resposta certa — há a sua resposta. Quando terminar, você vai reconhecer nos conceitos algo que acabou de viver.</p>
+
+<!-- ═══ GAME 1 ═══ -->
+<div class="game-container" id="g1">
+  <p class="game-kicker">Atividade Gamificada 1</p>
+  <p class="game-title">O Pesquisador e os Três Mundos</p>
+  <p class="game-intro">Quatro cenas. Quatro dilemas sobre pesquisa. Nenhuma resposta certa — apenas revelações sobre como você enxerga o mundo que quer estudar.</p>
+
+  <div id="g1s0" class="game-screen on">
+    <p class="g-qlabel">Antes de começar</p>
+    <p class="g-q">Qual fenômeno te inquieta? O que você quer entender melhor na sua pesquisa?</p>
+    <textarea class="g-textarea" id="g1-fen" placeholder="Ex: Como professores lidam com a vulnerabilidade dos alunos... / Por que líderes escolares abandonam o cargo..."></textarea>
+    <div class="g-nav"><button class="g-btn g-btn-p" onclick="g1Start()">Entrar no jogo →</button></div>
+  </div>
+
+  <div id="g1s-world" class="game-screen">
+    <p class="g-narrator">Três pesquisadores trabalham com o mesmo tema que você. Cada um enxerga o mundo de uma forma diferente. Com quem você ressoa?</p>
+    <div id="g1-fenbox" style="background:var(--paper-warm);border-radius:7px;padding:.65rem .9rem;font-size:13px;color:var(--ink-mid);font-style:italic;margin-bottom:1rem"></div>
+    <div class="g-world-card" id="g1wA" onclick="g1PickWorld('A')">
+      <p class="g-world-name">Pesquisadora Ana</p>
+      <p class="g-world-voice">"Quero saber o quanto. Preciso de dados que qualquer outro pesquisador possa verificar. A realidade está lá fora — só preciso medi-la com rigor."</p>
+    </div>
+    <div class="g-world-card" id="g1wB" onclick="g1PickWorld('B')">
+      <p class="g-world-name">Pesquisador Bruno</p>
+      <p class="g-world-voice">"Quero saber o porquê. Os números me dizem o que acontece, mas não me dizem o que as pessoas sentem. A realidade se revela quando eu escuto."</p>
+    </div>
+    <div class="g-world-card" id="g1wC" onclick="g1PickWorld('C')">
+      <p class="g-world-name">Pesquisadora Clara</p>
+      <p class="g-world-voice">"Quero os dois. Minha pergunta é complexa demais para caber em um só método. Preciso de dados e de histórias para chegar perto do que quero entender."</p>
+    </div>
+    <div class="g-nav" id="g1-world-nav" style="display:none">
+      <button class="g-btn" onclick="g1ShowScreen('g1s0')">← Voltar</button>
+      <button class="g-btn g-btn-p" onclick="g1GoChapter()">Começar as cenas →</button>
+    </div>
+  </div>
+
+  <div id="g1s-chap" class="game-screen">
+    <div class="g-prog-row"><div class="g-prog-track"><div class="g-prog-fill" id="g1-pbar" style="width:0%"></div></div><span class="g-prog-lbl" id="g1-pcnt"></span></div>
+    <p class="g-qlabel" id="g1-clabel"></p>
+    <div class="g-narrator" id="g1-narr"></div>
+    <div id="g1-dialogue" style="display:none;gap:10px;align-items:flex-start;margin-bottom:1rem">
+      <div style="width:34px;height:34px;border-radius:50%;background:var(--ink);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0" id="g1-av"></div>
+      <div style="background:white;border:1px solid var(--line);border-radius:0 10px 10px 10px;padding:.75rem .95rem;font-family:'Lora',serif;font-size:14px;color:var(--ink);line-height:1.65;flex:1" id="g1-speech"></div>
+    </div>
+    <p style="font-size:14px;color:var(--ink-mid);margin-bottom:.9rem" id="g1-scene-txt"></p>
+    <p class="g-qlabel">O que você diria?</p>
+    <div id="g1-opts"></div>
+    <div class="g-fb" id="g1-fb"><p class="g-fb-head" id="g1-fb-head"></p><p class="g-fb-body" id="g1-fb-body"></p></div>
+    <div class="g-nav" id="g1-chap-nav"></div>
+  </div>
+
+  <div id="g1s-end" class="game-screen">
+    <p class="g-result-score" id="g1-score-display"></p>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:.75rem">escolhas registradas</p>
+    <div style="margin-bottom:1.25rem">
+      <div class="g-score-row"><div class="g-score-meta"><span>Tendência positivista</span><span id="g1-sq">0</span></div><div class="g-score-track"><div class="g-score-fill sf-q" id="g1-bq" style="width:0%"></div></div></div>
+      <div class="g-score-row"><div class="g-score-meta"><span>Tendência interpretativista</span><span id="g1-sl">0</span></div><div class="g-score-track"><div class="g-score-fill sf-l" id="g1-bl" style="width:0%"></div></div></div>
+      <div class="g-score-row"><div class="g-score-meta"><span>Tendência pragmatista</span><span id="g1-sm">0</span></div><div class="g-score-track"><div class="g-score-fill sf-m" id="g1-bm" style="width:0%"></div></div></div>
+    </div>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:.5rem">Suas escolhas:</p>
+    <div id="g1-log"></div>
+    <div class="g-outro"><p class="g-outro-lbl">O que isso revela</p><p class="g-outro-txt" id="g1-insight"></p></div>
+    <div class="g-nav"><button class="g-btn" onclick="g1Restart()">← Refazer</button></div>
+  </div>
+</div><!-- /game 1 -->
+
+<h2>A pergunta que define tudo</h2>
+<p>Você acredita que a realidade existe de forma objetiva, independente de quem a observa? Ou acredita que ela é construída na relação entre o sujeito e o mundo? Não é uma pergunta filosófica abstrata. É a pergunta que determina se sua pesquisa vai mensurar fenômenos ou interpretá-los — e, portanto, que tipo de pergunta você pode fazer, que metodologia faz sentido e que revisão de literatura é coerente com o seu projeto.</p>
+
+<div class="paradigm-grid">
+  <div class="paradigm-card quant">
+    <p class="paradigm-title">Ontologia Realista + Epistemologia Positivista → Pesquisa Quantitativa</p>
+    <p>A realidade é uma. Ela pode ser medida. Busco leis gerais e relações causais. Exemplo: "Quantas árvores existem no planeta? Esse número aumentou ou diminuiu nos últimos 10 anos?"</p>
+  </div>
+  <div class="paradigm-card qual">
+    <p class="paradigm-title">Ontologia Relativista + Epistemologia Interpretativista → Pesquisa Qualitativa</p>
+    <p>A realidade é construída socialmente. Não pode ser medida, apenas compreendida. Busco significados, contextos e experiências vividas. Exemplo: "Como os jovens que abandonaram a escola vivenciam esse processo?"</p>
+  </div>
+  <div class="paradigm-card mista">
+    <p class="paradigm-title">Pragmatismo → Pesquisa Mista</p>
+    <p>Há uma ponte entre os dois mundos. Uso dados quantitativos e qualitativos de forma integrada. Exemplo: "Como os indicadores de evasão se articulam com as narrativas dos próprios estudantes evadidos?"</p>
+  </div>
+</div>
+
+<div class="quote-box">
+  <p class="quote-text">"Toda vez que eu quiser saber o porquê, eu estou querendo saber por meio de uma pesquisa qualitativa. Toda vez que eu quiser saber o quanto, eu quero saber por meio de uma pesquisa quantitativa."</p>
+  <p class="quote-attr">— Prof. Ernandes Rodrigues do Nascimento, durante a aula</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- ══════════════ III — BLOOM EXPANDIDA ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>A Taxonomia de Bloom: a Lente que Revela a Profundidade</h1>
+
+<p>A professora Cleide abriu sua parte da aula com uma afirmação direta: a Taxonomia de Bloom não é burocracia acadêmica. É uma estrutura de pensamento. Ela mostra que o conhecimento tem níveis — e exige coerência entre eles.</p>
+
+<div class="quote-box">
+  <p class="quote-text">"A Taxonomia de Bloom não é um checklist — é uma lente para enxergar a profundidade do seu projeto. Ela conecta problema, objetivos e perguntas, garantindo consistência epistemológica. É o que diferencia uma pesquisa de graduação de uma pesquisa de pós-graduação."</p>
+  <p class="quote-attr">— Prof.ª Cleide Maria dos Santos Munoz, durante a aula</p>
+</div>
+
+<p>O diagnóstico mais frequente em bancas de mestrado é a incoerência entre o que a pergunta pede e o que os objetivos propõem. Um objetivo de "identificar" numa pesquisa que exige análise profunda. Uma revisão bibliográfica enunciada como método, mas sem o protocolo que isso exige. Os verbos escolhidos revelam — ou denunciam — a ambição real do projeto.</p>
+
+<h2>Os seis níveis revisados</h2>
+
+<div class="bloom-wrap">
+  <div class="bloom-row"><div class="bloom-num b6">6</div><div class="bloom-content bc6"><div class="bloom-level">CRIAR</div><div class="bloom-verbs">Formular, Construir, Projetar, Propor, Compor</div><div class="bloom-zone">Zona do mestrado e doutorado</div></div></div>
+  <div class="bloom-row"><div class="bloom-num b5">5</div><div class="bloom-content bc5"><div class="bloom-level">AVALIAR</div><div class="bloom-verbs">Julgar, Criticar, Defender, Argumentar, Avaliar</div><div class="bloom-zone">Zona do mestrado e doutorado</div></div></div>
+  <div class="bloom-row"><div class="bloom-num b4">4</div><div class="bloom-content bc4"><div class="bloom-level">ANALISAR</div><div class="bloom-verbs">Comparar, Diferenciar, Examinar, Investigar, Decompor</div><div class="bloom-zone">Zona do mestrado e doutorado</div></div></div>
+  <div class="bloom-row"><div class="bloom-num b3">3</div><div class="bloom-content bc3"><div class="bloom-level">APLICAR</div><div class="bloom-verbs">Usar, Executar, Implementar, Demonstrar, Aplicar</div></div></div>
+  <div class="bloom-row"><div class="bloom-num b2">2</div><div class="bloom-content bc2"><div class="bloom-level">COMPREENDER</div><div class="bloom-verbs">Explicar, Resumir, Parafrasear, Classificar, Interpretar</div><div class="bloom-zone">Nível da revisão bibliográfica</div></div></div>
+  <div class="bloom-row"><div class="bloom-num b1">1</div><div class="bloom-content bc1"><div class="bloom-level">LEMBRAR</div><div class="bloom-verbs">Listar, Definir, Nomear, Identificar, Reconhecer</div><div class="bloom-zone">Nível da revisão bibliográfica</div></div></div>
+</div>
+
+<div class="callout blue">
+  <p class="callout-label">Zona do Mestrado e Doutorado</p>
+  <p>Projetos de pós-graduação devem se situar predominantemente nos níveis 4, 5 e 6. Um projeto que permanece nos níveis 1 e 2 é, na prática, uma revisão bibliográfica — valiosa, mas insuficiente para uma pesquisa de mestrado ou doutorado.</p>
+</div>
+
+<h2>Como a Taxonomia de Bloom atravessa cada seção do projeto</h2>
+<p>A professora Cleide foi precisa: cada parte do projeto exige um nível cognitivo específico. A revisão de literatura opera nos níveis 1 e 2 — demonstra domínio do campo. A metodologia situa-se no nível 3 — é a escolha de como aplicar um método ao contexto específico da pesquisa, exigindo coerência com o paradigma epistemológico adotado. O problema de pesquisa deve estar no nível 4 — nasce de uma lacuna analítica real. Os objetivos devem operar nos níveis 4, 5 e 6 — os verbos revelam a ambição epistemológica. As perguntas de pesquisa exigem nível 4 ou 5 — precisam ser respondidas com dados, análise e argumentação. A contribuição esperada situa-se no nível 6 — propõe algo que ainda não existia da forma que você apresenta.</p>
+
+<h2>Os verbos que fazem a diferença na pesquisa qualitativa</h2>
+<p>Para pesquisas qualitativas, a escolha dos verbos tem nuances específicas. Os verbos a seguir não apenas situam o projeto nos níveis adequados de Bloom — eles também sinalizam uma postura epistemológica interpretativista, coerente com a ontologia relativista:</p>
+
+<div class="callout teal">
+  <p class="callout-label">Verbos para objetivos qualitativos — níveis 4, 5 e 6</p>
+  <p><strong>Explorar</strong> — investigar um fenômeno ainda pouco compreendido, abrindo possibilidades. <strong>Investigar</strong> — examinar em profundidade, com rigor metodológico. <strong>Contextualizar</strong> — situar o fenômeno nas condições históricas, sociais e culturais que o constituem. <strong>Desvelar</strong> — tornar visível o que estava oculto ou naturalizado. <strong>Caracterizar</strong> — identificar as marcas específicas que definem o fenômeno no seu contexto. <strong>Propor</strong> — formular algo novo a partir da síntese do que foi investigado. <strong>Problematizar</strong> — questionar certezas estabelecidas, abrir tensões produtivas. <strong>Sistematizar</strong> — organizar e sintetizar conhecimento disperso em um quadro coerente. <strong>Reconhecer</strong> — identificar padrões, marcas ou estruturas que não eram evidentes. <strong>Interpretar</strong> — atribuir sentido a dados, discursos ou práticas. <strong>Elucidar</strong> — tornar claro o que era obscuro, lançar luz sobre relações não óbvias.</p>
+</div>
+
+<h2>O verbo que define o projeto — e os prompts que ajudam</h2>
+<p>A cada escolha de verbo, corresponde uma exigência metodológica — e uma ferramenta de IA que pode ajudar a afinar essa escolha. Os prompts abaixo foram apresentados na aula como estratégias concretas para usar a IA não para escrever a pesquisa, mas para pensar com mais clareza sobre ela.</p>
+
+<div class="prompt-box">
+  <p class="prompt-label">Prompt 1 — Avaliar e reescrever objetivos</p>
+  <p class="prompt-text">"Em qual nível da Taxonomia de Bloom revisada este objetivo se situa? Ele tem profundidade compatível com uma pesquisa de mestrado? Ajude-me a reformulá-lo usando verbos como desvelar, investigar, contextualizar ou elucidar — mantendo o contexto da minha pesquisa sobre [seu tema]."</p>
+</div>
+
+<div class="prompt-box">
+  <p class="prompt-label">Prompt 2 — Construir e afinar o problema de pesquisa</p>
+  <p class="prompt-text">"Estou desenvolvendo uma pesquisa de mestrado sobre [tema]. Que lacunas ainda não foram respondidas pela literatura? Que perguntas de pesquisa seriam compatíveis com o nível analítico exigido por um mestrado — usando verbos como problematizar, desvelar ou interpretar?"</p>
+</div>
+
+<div class="prompt-box">
+  <p class="prompt-label">Prompt 3 — Verificar coerência interna</p>
+  <p class="prompt-text">"Analise a coerência interna deste projeto segundo a Taxonomia de Bloom. O nível cognitivo do problema é compatível com o que os objetivos propõem? As perguntas têm densidade investigativa adequada para um mestrado? [Cole os elementos do seu projeto]"</p>
+</div>
+
+<div class="prompt-box">
+  <p class="prompt-label">Prompt 4 — Simulação de banca</p>
+  <p class="prompt-text">"Você é um pesquisador experiente em [área]. Com base neste projeto, que perguntas críticas você faria em uma banca de qualificação sobre a profundidade dos objetivos e a pertinência do problema?"</p>
+</div>
+
+<!-- ═══ GAME 2 ═══ -->
+<div class="game-container" id="g2" style="margin-top:2rem">
+  <p class="game-kicker">Atividade Gamificada 2</p>
+  <p class="game-title">O Verbo que Define Tudo</p>
+  <p class="game-intro">Quatro cenários. Em cada um, escolha o objetivo que tem densidade epistemológica adequada para o mestrado. Depois registre uma reflexão sobre o seu próprio projeto.</p>
+
+  <div id="g2s-chap" class="game-screen on">
+    <div class="g-prog-row"><div class="g-prog-track"><div class="g-prog-fill" id="g2-pbar" style="width:0%"></div></div><span class="g-prog-lbl" id="g2-pcnt">1 de 4</span></div>
+    <p class="g-qlabel" id="g2-clabel"></p>
+    <div class="g-narrator" id="g2-narr"></div>
+    <span class="chip" id="g2-chip"></span>
+    <p class="g-q" id="g2-q"></p>
+    <div id="g2-opts"></div>
+    <div class="g-fb" id="g2-fb"><p class="g-fb-head" id="g2-fb-head"></p><p class="g-fb-body" id="g2-fb-body"></p><p class="g-fb-action" id="g2-fb-action"></p></div>
+    <div class="g-reflect" id="g2-reflect">
+      <p class="g-reflect-lbl">Sobre o seu projeto</p>
+      <p class="g-reflect-q" id="g2-rq"></p>
+      <textarea class="g-textarea" id="g2-rinp" placeholder="Registre sua reflexão aqui..."></textarea>
+    </div>
+    <div class="g-nav" id="g2-nav"></div>
+  </div>
+
+  <div id="g2s-end" class="game-screen">
+    <p class="g-result-score" id="g2-score"></p>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:1rem">acertos</p>
+    <p class="g-result-msg" id="g2-msg"></p>
+    <div id="g2-diary" style="margin-bottom:1rem"></div>
+    <div id="g2-sum"></div>
+    <div class="g-nav"><button class="g-btn" onclick="g2Restart()">← Refazer</button></div>
+  </div>
+</div><!-- /game 2 -->
+
+<hr class="section-rule">
+
+<!-- ══════════════ IV — REVISÃO ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>Revisão Sistemática: o Rigor que Liberta</h1>
+
+<p>A aula trouxe um mapeamento abrangente dos tipos de revisão da literatura — e a mensagem central é que a escolha do tipo não é arbitrária. Ela decorre do objetivo da pesquisa, da postura epistemológica do pesquisador e da natureza das fontes disponíveis.</p>
+
+<table class="review-table">
+  <thead><tr><th>Tipo</th><th>Propósito e característica</th><th>Como a IA pode ajudar</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Sistemática</strong></td><td>Abordagem rigorosa e replicável; critérios explícitos de inclusão/exclusão; segue diretrizes PRISMA.</td><td>Elicit e Perplexity para triagem; Claude/ChatGPT para extração e síntese.</td></tr>
+    <tr><td><strong>Escopo</strong></td><td>Mapeia amplo corpo de literatura; inclui fontes diversas (mídia, políticas públicas, literatura cinzenta).</td><td>Perplexity para mapeamento rápido; prompts estruturados para categorização.</td></tr>
+    <tr><td><strong>Estado da Arte</strong></td><td>Responde: onde estamos, como chegamos, para onde ir. Perspectiva histórica mais ampla.</td><td>Claude/ChatGPT para síntese evolutiva; Elicit para artigos recentes por período.</td></tr>
+    <tr><td><strong>Meta-Etnográfica</strong></td><td>Sintetiza dados qualitativos; vai além dos achados individuais; 7 etapas de Noblit e Hare.</td><td>IA para codificação temática; a interpretação permanece com o pesquisador.</td></tr>
+    <tr><td><strong>Crítica</strong></td><td>Análise e síntese rigorosa; destaca contribuições e lacunas com postura avaliativa.</td><td>IA como interlocutora crítica para incoerências; julgamento final é humano.</td></tr>
+    <tr><td><strong>Teórica Integrativa</strong></td><td>Reúne e sintetiza teorias de diferentes estudos; desenvolve quadros teóricos mais robustos.</td><td>Claude para diálogos sobre campo teórico; Gemini para sínteses complementares.</td></tr>
+  </tbody>
+</table>
+
+<div class="quote-box">
+  <p class="quote-text">"A ausência de critérios objetivos e sistemáticos resulta em deficiências metodológicas que levam a viés na interpretação e nas conclusões, comprometendo a validade dos resultados e dificultando a replicação do estudo."</p>
+  <p class="quote-attr">— Material da Aula · Projeto INTEGRA/MUST University</p>
+</div>
+
+<div class="prompt-box">
+  <p class="prompt-label">Prompt 5 — Mapear lacunas na revisão de literatura</p>
+  <p class="prompt-text">"Quais são as principais lacunas de pesquisa sobre [tema] na área de educação? Liste estudos recentes e aponte questões ainda não investigadas. Foque em perspectivas qualitativas e interpretativas que ainda carecem de aprofundamento."</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- ══════════════ V — CONSTRUÇÃO DO PROJETO ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>Construindo o Seu Projeto: Cinco Estações</h1>
+
+<p>Agora o exercício é sobre o seu projeto. As cinco estações a seguir percorrem os momentos centrais da construção de uma pesquisa de mestrado — do problema à coerência interna. Em cada uma, uma pergunta metodológica real e um espaço para registrar suas próprias escolhas.</p>
+
+<!-- ═══ GAME 3 ═══ -->
+<div class="game-container" id="g3">
+  <p class="game-kicker">Atividade Gamificada 3</p>
+  <p class="game-title">Construindo o Seu Projeto</p>
+  <p class="game-intro">Cinco estações: problema, objetivo, revisão, uso de IA e coerência interna. Ao final, você terá um diário do projeto para levar à próxima reunião de orientação.</p>
+
+  <div id="g3s0" class="game-screen on">
+    <p class="g-qlabel">Antes de começar</p>
+    <p class="g-q">Qual é o tema central da sua pesquisa? Escreva em uma linha.</p>
+    <textarea class="g-textarea" id="g3-tema" placeholder="Ex: Identidade profissional de professores iniciantes em escolas periféricas..."></textarea>
+    <div class="g-nav"><button class="g-btn g-btn-p" onclick="g3Start()">Começar →</button></div>
+  </div>
+
+  <div id="g3s-chap" class="game-screen">
+    <div class="g-prog-row"><div class="g-prog-track"><div class="g-prog-fill" id="g3-pbar" style="width:0%"></div></div><span class="g-prog-lbl" id="g3-pcnt"></span></div>
+    <p class="g-qlabel" id="g3-clabel"></p>
+    <p style="font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:.75rem" id="g3-title"></p>
+    <div class="g-narrator" id="g3-narr"></div>
+    <span class="chip" id="g3-chip"></span>
+    <p class="g-q" id="g3-q"></p>
+    <div id="g3-opts"></div>
+    <div class="g-fb" id="g3-fb"><p class="g-fb-head" id="g3-fb-head"></p><p class="g-fb-body" id="g3-fb-body"></p><p class="g-fb-action" id="g3-fb-action"></p></div>
+    <div class="g-reflect" id="g3-reflect">
+      <p class="g-reflect-lbl">Sobre o seu projeto</p>
+      <p class="g-reflect-q" id="g3-rq"></p>
+      <textarea class="g-textarea" id="g3-rinp" placeholder="Registre aqui..."></textarea>
+    </div>
+    <div class="g-nav" id="g3-nav"></div>
+  </div>
+
+  <div id="g3s-end" class="game-screen">
+    <p class="g-result-score" id="g3-score"></p>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:1rem">acertos metodológicos</p>
+    <p class="g-result-msg" id="g3-msg"></p>
+    <div id="g3-diary" style="margin-bottom:1.25rem"></div>
+    <div id="g3-sum" style="margin-bottom:1rem"></div>
+    <div class="g-outro"><p class="g-outro-lbl">O próximo passo</p><p class="g-outro-txt" id="g3-next"></p></div>
+    <div class="g-nav"><button class="g-btn" onclick="g3Restart()">← Refazer</button></div>
+  </div>
+</div><!-- /game 3 -->
+
+<hr class="section-rule">
+
+<!-- ══════════════ VI — FERRAMENTAS ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>Qual Ferramenta, em Qual Momento</h1>
+<p>Não existe a melhor ferramenta de IA. Existe a ferramenta certa para o momento certo da pesquisa.</p>
+
+<table class="tools-table">
+  <thead><tr><th>Ferramenta</th><th>Melhor uso no projeto</th><th>Limitação a conhecer</th></tr></thead>
+  <tbody>
+    <tr><td>Claude</td><td>Análise de objetivos, coerência do projeto, simulação de banca, textos longos e articulados</td><td>Sem acesso à internet em tempo real (versão padrão)</td></tr>
+    <tr><td>ChatGPT</td><td>Reescrita de objetivos, listas de verbos, mapas conceituais, reformulações</td><td>Alta taxa de alucinação; versão gratuita com limitações de contexto</td></tr>
+    <tr><td>Gemini</td><td>Sínteses rápidas, checagem complementar de coerência</td><td>Menos preciso em textos acadêmicos longos</td></tr>
+    <tr><td>Perplexity</td><td>Revisão de literatura com fontes reais citadas, mapeamento do estado da arte</td><td>Sínteses podem ser superficiais; verificar sempre as fontes</td></tr>
+    <tr><td>Elicit</td><td>Revisão sistemática; encontrar e resumir artigos peer-reviewed por tema</td><td>Interface em inglês; banco de dados limitado a algumas áreas</td></tr>
+    <tr><td>NotebookLM</td><td>Organização e análise de documentos próprios; geração de podcasts e resumos</td><td>Pode alucinar ao sintetizar — sempre revisar o output gerado</td></tr>
+    <tr><td>Mendeley</td><td>Gerenciamento de referências bibliográficas, organização de PDFs e geração automática de citações em ABNT, APA e outros formatos</td><td>Requer cadastro; sincronização pode ser lenta com bibliotecas grandes</td></tr>
+  </tbody>
+</table>
+
+<div style="margin:2rem 0;background:white;border:1px solid var(--line);border-radius:10px;padding:1.25rem 1.5rem">
+  <h3 style="margin-bottom:.4rem;color:var(--ink);font-size:.95rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em">Como usar o Mendeley na prática</h3>
+  <p style="font-size:14px;color:var(--ink-mid);margin-bottom:1rem;line-height:1.65">O Mendeley foi apresentado na aula como ferramenta essencial para organizar referências e gerar citações automaticamente em ABNT, APA e outros formatos. Assista ao tutorial completo no YouTube:</p>
+  <a href="https://www.youtube.com/watch?v=hCOz_3h-nrU" target="_blank"
+     style="display:inline-flex;align-items:center;gap:10px;background:#a32020;color:white;text-decoration:none;padding:.65rem 1.25rem;border-radius:7px;font-size:14px;font-weight:500">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="white"/></svg>
+    Assistir tutorial do Mendeley no YouTube →
+  </a>
+  <p style="font-size:12px;color:var(--ink-soft);margin-top:.6rem">GERENCIADOR DE REFERÊNCIAS — MENDELEY + WORD · tutorial passo a passo</p>
+</div>
+
+
+<div class="callout purple">
+  <p class="callout-label">Uma ressalva importante</p>
+  <p>A IA é uma interlocutora — não uma orientadora. Ela não conhece o contexto institucional de vocês, não domina o campo teórico com a profundidade que a orientação conhece, e pode errar. Use como ponto de partida para pensar, não como ponto de chegada para copiar. O pensamento, a autoria e as escolhas são seus.</p>
+</div>
+
+<hr class="section-rule">
+
+<!-- ══════════════ VII — PERGUNTAS DOS ALUNOS ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>O Diálogo mais Importante da Aula</h1>
+<p>Ao longo da aula, nas interações do chat e nas perguntas levantadas, alguns questionamentos tocaram nas tensões mais reais da vida acadêmica. O quiz a seguir reconstrói esse diálogo — mas agora você responde antes de ver a síntese dos professores. Cada acerto confirma uma clareza. Cada erro abre uma.</p>
+
+<!-- ═══ GAME 4 — QUIZ ═══ -->
+<div class="game-container" id="g4">
+  <p class="game-kicker">Quiz da Aula</p>
+  <p class="game-title">O que os Alunos Perguntaram — e o que a Aula Respondeu</p>
+  <p class="game-intro">Cinco perguntas reais levantadas durante a aula. Escolha a resposta antes de ver a síntese dos professores.</p>
+
+  <div id="g4s-quiz" class="game-screen on">
+    <div class="g-prog-row"><div class="g-prog-track"><div class="g-prog-fill" id="g4-pbar" style="width:0%"></div></div><span class="g-prog-lbl" id="g4-pcnt">1 de 5</span></div>
+    <span class="chip" id="g4-chip"></span>
+    <p class="g-qlabel" id="g4-qlabel">Pergunta do aluno</p>
+    <p class="g-q" id="g4-q"></p>
+    <div id="g4-opts"></div>
+    <div class="g-fb" id="g4-fb"><p class="g-fb-head" id="g4-fb-head"></p><p class="g-fb-body" id="g4-fb-body"></p><p class="g-fb-action" id="g4-fb-action"></p></div>
+    <div class="g-nav" id="g4-nav"></div>
+  </div>
+
+  <div id="g4s-end" class="game-screen">
+    <p class="g-result-score" id="g4-score"></p>
+    <p style="font-size:13px;color:var(--ink-soft);margin-bottom:1rem">respostas alinhadas com a síntese da aula</p>
+    <p class="g-result-msg" id="g4-msg"></p>
+    <div id="g4-sum"></div>
+    <div class="g-nav"><button class="g-btn" onclick="g4Restart()">← Refazer</button></div>
+  </div>
+</div><!-- /game 4 -->
+
+<hr class="section-rule">
+
+<!-- ══════════════ VIII — ENCERRAMENTO ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>O que Fica — e o que Você Faz com Isso</h1>
+
+<p>Três horas e quarenta e dois segundos. Quatrocentos e noventa e sete participantes. Tempo médio de permanência: mais de uma hora e vinte minutos. Esses números dizem algo que vai além da estatística: há pesquisadores que querem mais do que receitas. Querem entender.</p>
+
+<div class="quote-box">
+  <p class="quote-text">"Não transfiram a sua capacidade para um algoritmo. A centralidade de todo o processo de organização é do ser humano. Nós é que vamos definir todo o nosso processo."</p>
+  <p class="quote-attr">— Prof.ª Rosemary Trabold Nicácio, sobre a IA e o pesquisador</p>
+</div>
+
+<p>A aula 3 do INTEGRA construiu um argumento que atravessa tudo: a inteligência artificial é uma ferramenta extraordinária para otimizar o trabalho braçal da pesquisa. Mas o pensamento, a autoria, a responsabilidade intelectual e a capacidade de desvelar o mundo — isso é irrenunciável e intransferível.</p>
+
+<ul>
+  <li>A Bloom não é burocracia — é uma lente para medir a profundidade do seu projeto.</li>
+  <li>Pesquisas de mestrado e doutorado vivem nos níveis 4, 5 e 6. Fique lá.</li>
+  <li>Os verbos dos seus objetivos revelam (ou traem) a sua intenção epistemológica.</li>
+  <li>O tipo de revisão não é uma escolha estética — nasce do seu problema de pesquisa.</li>
+  <li>A IA é uma interlocutora, não uma orientadora. O pensamento, a autoria e as escolhas são suas.</li>
+</ul>
+
+<!-- ── VÍDEO DA AULA 3 ── -->
+<div style="margin:2.5rem 0">
+  <h3 style="margin-bottom:.75rem;color:var(--ink)">Assista à Aula 3 na íntegra</h3>
+  <p style="font-size:14px;color:var(--ink-mid);margin-bottom:1rem">Este memorial é o registro escrito e interativo do que foi discutido ao vivo. O vídeo completo está disponível no canal da MUST University no YouTube.</p>
+  <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;border:1px solid var(--line)">
+    <iframe
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+      src="https://www.youtube.com/embed/1ivZuO4-NIk"
+      title="INTEGRA · Aula 3 — Utilização da IA para Revisão Sistemática da Literatura · MUST University"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p style="font-size:12px;color:var(--ink-soft);margin-top:.6rem;text-align:center">
+    Aula 3 · INTEGRA: IA + Escrita Acadêmica · MUST University
+  </p>
+</div>
+
+<hr class="section-rule">
+
+<!-- ══════════════ IX — REFERÊNCIAS ══════════════ -->
+<div class="sec-marker"><span class="sec-dot"></span></div>
+<h1>Referências e Materiais do Curso</h1>
+
+<p>Este memorial integra conteúdos produzidos ao longo das três primeiras aulas do curso INTEGRA: IA + Escrita Acadêmica. Os materiais originais, as gravações e os documentos de apoio estão listados abaixo para consulta e aprofundamento.</p>
+
+<!-- Aulas em vídeo -->
+<h2>Aulas gravadas — INTEGRA: IA + Escrita Acadêmica</h2>
+
+<div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0 1.5rem">
+  <div style="background:white;border:1px solid var(--line);border-left:4px solid var(--purple);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem">
+    <div style="width:48px;height:48px;background:var(--purp-l);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#5c3d8f"/></svg>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px">Aula 3 — Utilização da IA para Revisão Sistemática da Literatura <span style="font-size:11px;background:var(--purp-l);color:var(--purple);padding:2px 7px;border-radius:10px;margin-left:4px;font-weight:500">Este material</span></p>
+      <p style="font-size:12px;color:var(--ink-soft);margin-bottom:.4rem">INTEGRA · MUST University · 18 abr. 2026</p>
+      <a href="https://youtube.com/playlist?list=PL6qTqqCgd3ktDw5h3ICm1OKnqKZSnu4mO" style="font-size:12px;color:var(--blue);text-decoration:none" target="_blank">▶ Assistir no YouTube →</a>
+    </div>
+  </div>
+
+  <div style="background:white;border:1px solid var(--line);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem">
+    <div style="width:48px;height:48px;background:var(--red-l);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#a32020"/></svg>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px">Aula 2 — Iniciando o Projeto de Pesquisa: ontologia, epistemologia e metodologia</p>
+      <p style="font-size:12px;color:var(--ink-soft);margin-bottom:.4rem">INTEGRA · MUST University · 2026</p>
+      <!-- DESIGNER: substituir LINK_AULA_2 pela URL real do YouTube -->
+      <a href="LINK_AULA_2" style="font-size:12px;color:var(--blue);text-decoration:none" target="_blank">▶ Assistir no YouTube →</a>
+    </div>
+  </div>
+
+  <div style="background:white;border:1px solid var(--line);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem">
+    <div style="width:48px;height:48px;background:var(--red-l);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#a32020"/></svg>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px">Aula 1 — Ferramentas de IA para Pesquisa Acadêmica: primeiros passos</p>
+      <p style="font-size:12px;color:var(--ink-soft);margin-bottom:.4rem">INTEGRA · MUST University · 2026</p>
+      <!-- DESIGNER: substituir LINK_AULA_1 pela URL real do YouTube -->
+      <a href="LINK_AULA_1" style="font-size:12px;color:var(--blue);text-decoration:none" target="_blank">▶ Assistir no YouTube →</a>
+    </div>
+  </div>
+
+  <div style="background:white;border:1px solid var(--line);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem">
+    <div style="width:48px;height:48px;background:var(--blue-l);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#2d5fa6"/></svg>
+    </div>
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px">Playlist completa — todas as aulas do INTEGRA</p>
+      <p style="font-size:12px;color:var(--ink-soft);margin-bottom:.4rem">Canal MUST University · YouTube</p>
+      <a href="https://youtube.com/playlist?list=PL6qTqqCgd3ktDw5h3ICm1OKnqKZSnu4mO&si=hEyE98DkCFnWTfoj" style="font-size:12px;color:var(--blue);text-decoration:none" target="_blank">▶ Acessar playlist completa →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Materiais de apoio -->
+<h2>Materiais de apoio produzidos para o curso</h2>
+
+<div style="display:flex;flex-direction:column;gap:.6rem;margin:1rem 0 1.5rem">
+
+  <div style="background:var(--purp-l);border-radius:8px;padding:.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin:0">E-book · Aula 3 — IA para Revisão Sistemática <span style="font-size:11px;background:var(--purple);color:white;padding:2px 7px;border-radius:10px;margin-left:4px">Este arquivo</span></p>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0">INTEGRA · MUST University · abr. 2026</p>
+    </div>
+    <span style="font-size:12px;color:var(--purple);font-weight:500">Você está aqui</span>
+  </div>
+
+</div>
+
+
+  <div style="background:var(--paper-warm);border-radius:8px;padding:.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin:0">E-book · Aula 2 — Iniciando o Projeto de Pesquisa</p>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0">INTEGRA · MUST University · 2026</p>
+    </div>
+    <!-- DESIGNER: substituir LINK_EBOOK_2 pela URL real do Google Drive / plataforma -->
+    <a href="LINK_EBOOK_2" style="font-size:12px;color:var(--blue);text-decoration:none;white-space:nowrap" target="_blank">Acessar material →</a>
+  </div>
+
+
+  <div style="background:var(--paper-warm);border-radius:8px;padding:.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+    <div>
+      <p style="font-size:13px;font-weight:500;color:var(--ink);margin:0">E-book · Aula 1 — Ferramentas de IA para Pesquisa</p>
+      <p style="font-size:12px;color:var(--ink-soft);margin:0">INTEGRA · MUST University · 2026</p>
+    </div>
+    <!-- DESIGNER: substituir LINK_EBOOK_1 pela URL real do Google Drive / plataforma -->
+    <a href="LINK_EBOOK_1" style="font-size:12px;color:var(--blue);text-decoration:none;white-space:nowrap" target="_blank">Acessar material →</a>
+  </div>
+
+<!-- Referências bibliográficas -->
+<h2>Referências bibliográficas</h2>
+
+<div style="font-size:13px;color:var(--ink-mid);line-height:1.9;border-top:1px solid var(--line);padding-top:1rem">
+  <p>BOTELHO, L. L. R.; CUNHA, C. C.; MACEDO, M. O método da revisão integrativa nos estudos organizacionais. <em>Gestão e Sociedade</em>, v. 5, n. 11, p. 121–136, 2011.</p>
+  <p>GRANT, M. J.; BOOTH, A. A typology of reviews: an analysis of 14 review types and associated methodologies. <em>Health Information & Libraries Journal</em>, v. 26, n. 2, p. 91–108, 2009.</p>
+  <p>HIGGINS, J. P.; GREEN, S. (Eds.). <em>Cochrane handbook for systematic reviews of interventions</em>. Vol. 4. John Wiley & Sons, 2011.</p>
+  <p>MARCONI, M. A.; LAKATOS, E. M. <em>Fundamentos de metodologia científica</em>. 8. ed. São Paulo: Atlas, 2017.</p>
+  <p>MOHER, D. et al. Preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement. <em>BMJ</em>, 339, b2535, 2009.</p>
+  <p>NASCIMENTO, E. R.; ALMEIDA, L. P. C. M.; MUNOZ, C. M. S.; NICACIO, R. T. <em>INTEGRA: Aulas de IA + Escrita Acadêmica — Material da Aula 3</em>. MUST University, Florida, abr. 2026.</p>
+  <p>ROTHER, E. T. Revisão sistemática X revisão narrativa. <em>Revista Diagnóstico & Tratamento</em>, São Paulo, v. 14, n. 2, p. 1–4, 2007.</p>
+  <p>SAMPAIO, R. F.; MANCINI, M. C. Estudos de revisão sistemática: um guia para síntese criteriosa da evidência científica. <em>Revista Brasileira de Fisioterapia</em>, v. 11, n. 1, p. 83–89, 2007.</p>
+  <p>SEVERINO, A. J. <em>Metodologia do trabalho científico</em>. 24. ed. São Paulo: Cortez, 2016.</p>
+  <p>TRANFIELD, D.; DENYER, D.; SMART, P. Towards a methodology for developing evidence-informed management knowledge by means of systematic review. <em>British Journal of Management</em>, v. 14, n. 3, p. 207–222, 2003.</p>
+</div>
+
+<div class="footer">
+  <p class="footer-close">Até a próxima aula — chegue com os seus objetivos revisados.</p>
+  <p>INTEGRA: IA + Escrita Acadêmica · MUST University · 2026</p>
+</div>
+
+</div><!-- /page -->
+
+<script>
+// ════════════════════════════════════════════════════════
+// GAME 1 — O Pesquisador e os Três Mundos
+// ════════════════════════════════════════════════════════
+const G1 = {fen:'',world:'',scores:{Q:0,L:0,M:0},log:[],ci:0};
+const G1_CHAPTERS = [
+  {label:'Cena 1 — o objeto',av:'Or',speech:'Me diz uma coisa: o fenômeno que você quer estudar existe independentemente de você estudar? Ou ele só existe porque pessoas constroem sentido sobre ele?',scene:'Você para. Nunca tinha pensado dessa forma.',
+   opts:[
+    {l:'A',txt:'Existe independentemente. Se eu não estudar, o fenômeno continua lá — posso medi-lo.',tag:'Q',fb:'Você está adotando uma postura ontológica realista — a base da pesquisa quantitativa. Pense: seu fenômeno é observável e mensurável por qualquer pesquisador em qualquer contexto?'},
+    {l:'B',txt:'Ele só ganha forma quando as pessoas vivem e dão sentido a ele. Sem experiência humana, não há fenômeno.',tag:'L',fb:'Você está adotando uma ontologia relativista — fundamento da pesquisa qualitativa. Quem são os sujeitos que constroem esse fenômeno no seu contexto?'},
+    {l:'C',txt:'Há uma parte objetiva e uma parte construída. Preciso das duas para entender o todo.',tag:'M',fb:'Você está no terreno do pragmatismo — base da pesquisa mista. Como as duas abordagens se articulam no seu problema?'}
+   ]},
+  {label:'Cena 2 — a evidência',av:'Co',speech:'O que conta como evidência para o que você quer estudar? Como você vai mostrar que o que encontrar é válido?',scene:'Você percebe que nunca formulou isso com clareza.',
+   opts:[
+    {l:'A',txt:'Dados que qualquer outro pesquisador poderia coletar e chegar a resultados parecidos.',tag:'Q',fb:'Replicabilidade é um valor central do positivismo. Exige instrumentos validados e amostras representativas. Seu fenômeno se presta a isso?'},
+    {l:'B',txt:'As palavras, histórias e experiências que as pessoas compartilham. Cada entrevista é única — e é isso que tem valor.',tag:'L',fb:'Aqui a validade vem da profundidade e coerência interpretativa. Como você vai demonstrar rigor em uma análise que depende da sua interpretação?'},
+    {l:'C',txt:'Os dois — preciso de indicadores objetivos e de narrativas. Um sem o outro não responde minha pergunta.',tag:'M',fb:'Usar dois tipos de evidência exige mostrar como eles se conectam. O que cada tipo responde que o outro não consegue?'}
+   ]},
+  {label:'Cena 3 — o campo',av:'Or',speech:'Quando você vai a campo, o que você vê? O que está nas suas mãos? Com quem você está?',scene:'',
+   opts:[
+    {l:'A',txt:'Planilhas, questionários, escalas — instrumentos padronizados para comparar respostas entre muitas pessoas.',tag:'Q',fb:'Campo quantitativo: estruturado, voltado para generalização. O que você perde ao reduzir o fenômeno a variáveis? Há algo que resiste à quantificação?'},
+    {l:'B',txt:'Conversas longas, observações, documentos — presença no lugar onde o fenômeno acontece.',tag:'L',fb:'Campo qualitativo: imersivo, voltado para profundidade. Você está disposto a ser surpreendido? A pesquisa qualitativa abre espaço para dados que contradigam suas hipóteses.'},
+    {l:'C',txt:'Uma fase com instrumento e outra com entrevistas — cada uma respondendo a uma parte da minha pergunta.',tag:'M',fb:'Design misto. A ordem não é arbitrária: ela reflete uma lógica de investigação. O que vem primeiro — e por quê?'}
+   ]},
+  {label:'Cena 4 — a contribuição',av:'Or',speech:'Quando você defender, o que você terá acrescentado que ainda não existia? Por que o campo vai ser diferente por causa da sua pesquisa?',scene:'Você respira fundo. É a pergunta mais importante.',
+   opts:[
+    {l:'A',txt:'Um padrão ou relação que pode ser verificada e replicada — que avança o que já se sabe de forma mensurável.',tag:'Q',fb:'Contribuição quantitativa: produzir conhecimento generalizável. Você tem acesso a dados suficientes? O que faz se os dados não confirmarem o esperado?'},
+    {l:'B',txt:'Uma compreensão mais profunda de como certos sujeitos vivem e significam um fenômeno — o que os números não capturam.',tag:'L',fb:'Contribuição qualitativa: iluminar o que estava invisível. Qual lacuna específica você vai preencher? Quem ainda não foi ouvido nesse campo?'},
+    {l:'C',txt:'Uma visão integrada que articula dados e experiências — mais completa do que qualquer abordagem isolada.',tag:'M',fb:'Contribuição mista mais poderosa: o todo maior que as partes. Tente completar: "O quantitativo me diz X. O qualitativo me diz Y. Juntos revelam Z."'}
+   ]}
+];
+const G1_INSIGHTS={Q:'Suas escolhas revelam tendência a enxergar o mundo como mensurável e verificável. Antes de continuar, leve esta pergunta ao texto: meu objeto realmente comporta ser medido, ou há algo nele que exige escuta?',L:'Suas escolhas revelam orientação pela profundidade, escuta e significado. Antes de continuar: minha pergunta de pesquisa está formulada para convidar narrativas — ou ainda pede dados?',M:'Suas escolhas mostram pensamento integrador. Antes de continuar: as duas abordagens que pretendo usar respondem a partes diferentes da mesma pergunta, ou são dois estudos paralelos?'};
+
+function g1ShowScreen(id){document.querySelectorAll('#g1 .game-screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
+function g1Start(){const f=document.getElementById('g1-fen').value.trim();if(!f){document.getElementById('g1-fen').focus();return;}G1.fen=f;document.getElementById('g1-fenbox').textContent='"'+f+'"';g1ShowScreen('g1s-world');}
+function g1PickWorld(w){G1.world=w;['A','B','C'].forEach(x=>document.getElementById('g1w'+x).classList.remove('chosen'));document.getElementById('g1w'+w).classList.add('chosen');document.getElementById('g1-world-nav').style.display='flex';}
+function g1GoChapter(){G1.ci=0;g1RenderChapter();g1ShowScreen('g1s-chap');}
+function g1RenderChapter(){
+  const c=G1_CHAPTERS[G1.ci];const tot=G1_CHAPTERS.length;
+  document.getElementById('g1-pbar').style.width=Math.round((G1.ci/tot)*100)+'%';
+  document.getElementById('g1-pcnt').textContent=(G1.ci+1)+' de '+tot;
+  document.getElementById('g1-clabel').textContent=c.label;
+  document.getElementById('g1-narr').style.display='none';
+  const d=document.getElementById('g1-dialogue');
+  document.getElementById('g1-av').textContent=c.av;
+  document.getElementById('g1-speech').textContent=c.speech;
+  d.style.display='flex';
+  document.getElementById('g1-scene-txt').textContent=c.scene;
+  const oa=document.getElementById('g1-opts');oa.innerHTML='';
+  c.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='g-opt';b.setAttribute('data-l',o.l);b.textContent=o.txt;b.onclick=()=>g1Pick(i);oa.appendChild(b);});
+  document.getElementById('g1-fb').className='g-fb';
+  document.getElementById('g1-chap-nav').innerHTML='';
+}
+function g1Pick(i){
+  const c=G1_CHAPTERS[G1.ci];const ch=c.opts[i];
+  document.querySelectorAll('#g1-opts .g-opt').forEach((b,j)=>{b.disabled=true;b.classList.toggle('right',j===i);});
+  G1.scores[ch.tag]++;G1.log.push({label:c.label,txt:ch.txt,tag:ch.tag});
+  const fb=document.getElementById('g1-fb');fb.className='g-fb on ok';
+  document.getElementById('g1-fb-head').textContent='Reflexão';
+  document.getElementById('g1-fb-body').textContent=ch.fb;
+  const nav=document.getElementById('g1-chap-nav');nav.innerHTML='';
+  const nb=document.createElement('button');nb.className='g-btn g-btn-p';
+  nb.textContent=G1.ci<G1_CHAPTERS.length-1?'Próxima cena →':'Ver resultado →';
+  nb.onclick=()=>{G1.ci<G1_CHAPTERS.length-1?(G1.ci++,g1RenderChapter()):g1ShowEnd()};nav.appendChild(nb);
+}
+function g1ShowEnd(){
+  const tot=G1_CHAPTERS.length;const pct=x=>Math.round((x/tot)*100)+'%';
+  document.getElementById('g1-score-display').textContent=tot;
+  document.getElementById('g1-sq').textContent=G1.scores.Q;document.getElementById('g1-sl').textContent=G1.scores.L;document.getElementById('g1-sm').textContent=G1.scores.M;
+  setTimeout(()=>{document.getElementById('g1-bq').style.width=pct(G1.scores.Q);document.getElementById('g1-bl').style.width=pct(G1.scores.L);document.getElementById('g1-bm').style.width=pct(G1.scores.M);},100);
+  const log=document.getElementById('g1-log');log.innerHTML='';
+  G1.log.forEach(l=>{const d=document.createElement('div');d.className='g-diary-item';d.innerHTML='<p class="g-diary-lbl">'+l.label+'</p><p class="g-diary-txt">"'+l.txt+'"</p>';log.appendChild(d);});
+  const dom=Object.entries(G1.scores).sort((a,b)=>b[1]-a[1])[0][0];
+  document.getElementById('g1-insight').textContent=G1_INSIGHTS[dom];
+  g1ShowScreen('g1s-end');
+}
+function g1Restart(){G1.fen='';G1.world='';G1.scores={Q:0,L:0,M:0};G1.log=[];G1.ci=0;['A','B','C'].forEach(x=>document.getElementById('g1w'+x).classList.remove('chosen'));document.getElementById('g1-world-nav').style.display='none';document.getElementById('g1-fen').value='';g1ShowScreen('g1s0');}
+
+// ════════════════════════════════════════════════════════
+// GAME 2 — O Verbo que Define Tudo
+// ════════════════════════════════════════════════════════
+const G2={ci:0,answers:[],reflections:[],score:0};
+const G2_STAGES=[
+  {label:'Estação 1',chip:'chip-b',chipTxt:'problema de pesquisa',
+   narr:'Uma inquietação legítima não é automaticamente um problema de pesquisa. A formulação importa — e muito.',
+   q:'Qual dessas formulações tem densidade investigativa adequada para uma dissertação de mestrado sobre evasão escolar?',
+   opts:[
+    {l:'A',txt:'A evasão escolar é um problema sério no Brasil que precisa ser estudado.'},
+    {l:'B',txt:'Quero entender por que alunos abandonam a escola.'},
+    {l:'C',txt:'Como as trajetórias de vida de jovens em vulnerabilidade social condicionam as decisões de abandono escolar no ensino médio público?'},
+    {l:'D',txt:'Quais são as taxas de evasão escolar nas escolas públicas de São Paulo entre 2018 e 2023?'}
+   ],correct:2,
+   fb_ok:'Essa formulação situa-se no nível 4 de Bloom, articula sujeitos específicos, contexto delimitado e pressupõe uma pergunta que exige campo, interpretação e referencial teórico.',
+   fb_no:'A e B são inquietações válidas, mas vagas. D é quantitativa — responde "quanto", não "como" ou "por quê". Um bom problema delimita sujeitos, contexto e implica um método.',
+   fb_action:'Seu problema está formulado como pergunta? Ela implica sujeitos, contexto e método? Se ainda é uma afirmação vaga, transforme-a em questão investigativa.',
+   rp:'Escreva o problema de pesquisa do seu projeto como uma pergunta — a mais honesta que você conseguir agora.'},
+
+  {label:'Estação 2',chip:'chip-t',chipTxt:'objetivos e verbos',
+   narr:'Os verbos dos objetivos são o termômetro mais honesto da profundidade do projeto. Escolha-os com intenção.',
+   q:'Tema: uso de plataformas digitais no ensino remoto em escolas públicas. Qual objetivo tem densidade epistemológica adequada para um mestrado?',
+   opts:[
+    {l:'A',txt:'Identificar as plataformas digitais utilizadas no ensino remoto das escolas municipais.'},
+    {l:'B',txt:'Investigar como as práticas docentes foram reconfiguradas pelo uso de plataformas digitais à luz do conceito de mediação tecnológica.'},
+    {l:'C',txt:'Mostrar que o ensino remoto foi prejudicado pela falta de infraestrutura tecnológica.'},
+    {l:'D',txt:'Pesquisar sobre o ensino remoto e as tecnologias usadas pelos professores durante a pandemia.'}
+   ],correct:1,
+   fb_ok:'"Investigar" situa-se no nível 4 de Bloom, articula referencial teórico explícito ("mediação tecnológica"), pressupõe coleta de dados e interpretação. Tem densidade epistemológica adequada.',
+   fb_no:'"Identificar" é nível 1 de Bloom. "Mostrar que" pressupõe conclusão antes da pesquisa. "Pesquisar sobre" não é objetivo — é atividade. Use verbos como investigar, desvelar, contextualizar, interpretar.',
+   fb_action:'Abra seu objetivo geral e sublinhe o verbo. Em qual nível de Bloom ele está? Se em 1, 2 ou 3, reformule. Use o Prompt 1 deste memorial para pedir à IA sugestões com os verbos qualitativos certos.',
+   rp:'Escreva o objetivo geral do seu projeto e anote o nível de Bloom em que o verbo se situa.'},
+
+  {label:'Estação 3',chip:'chip-b',chipTxt:'revisão de literatura',
+   narr:'O tipo de revisão não é independente do paradigma da pesquisa. A escolha errada cria uma inconsistência metodológica que a banca vai identificar.',
+   q:'Você faz pesquisa qualitativa sobre a construção de identidade profissional de professores iniciantes. Qual revisão é mais coerente?',
+   opts:[
+    {l:'A',txt:'Revisão sistemática com meta-análise — sintetiza todas as evidências quantitativas disponíveis.'},
+    {l:'B',txt:'Revisão narrativa ou meta-etnográfica — sintetiza perspectivas qualitativas e produz novos insights interpretativos.'},
+    {l:'C',txt:'Revisão de estado da arte — para mapear indicadores de desempenho docente ao longo do tempo.'},
+    {l:'D',txt:'Qualquer tipo de revisão serve, desde que inclua muitos artigos recentes.'}
+   ],correct:1,
+   fb_ok:'Uma pesquisa sobre experiências e construção de identidade exige revisão que dialogue com dados de linguagem — narrativas, interpretações, perspectivas. A revisão narrativa ou meta-etnográfica é coerente com essa epistemologia.',
+   fb_no:'A revisão sistemática com meta-análise é própria de pesquisas quantitativas. Para uma pesquisa qualitativa sobre experiências, essa escolha cria inconsistência metodológica.',
+   fb_action:'Qual tipo de revisão você está fazendo? Ela é coerente com sua abordagem? Se há inconsistência, é melhor identificar agora do que na banca.',
+   rp:'Qual tipo de revisão de literatura faz mais sentido para o seu projeto e por quê? Escreva em duas ou três frases.'},
+
+  {label:'Estação 4',chip:'chip-p',chipTxt:'IA e autoria',
+   narr:'Usar IA em pesquisa não é trapaça — é competência. Mas competência exige saber o que a IA faz bem, o que ela distorce e o que só você pode fazer.',
+   q:'Você está na fase de revisão de literatura. Para qual tarefa o uso de IA é mais adequado e menos arriscado?',
+   opts:[
+    {l:'A',txt:'Pedir à IA que escreva os parágrafos de fundamentação teórica diretamente no texto.'},
+    {l:'B',txt:'Usar a IA para identificar autores citados e organizar fontes por temática — e depois você lê, seleciona e sintetiza.'},
+    {l:'C',txt:'Pedir à IA que avalie se o referencial teórico é suficiente para a pesquisa.'},
+    {l:'D',txt:'Copiar o resumo que a IA gerou sobre um artigo sem ler o original.'}
+   ],correct:1,
+   fb_ok:'Identificar, organizar e mapear são funções que a IA executa bem. O trabalho intelectual — ler, selecionar, interpretar, sintetizar, argumentar — permanece com o pesquisador. Isso constitui autoria legítima.',
+   fb_no:'As opções A, C e D transferem para a IA decisões que são responsabilidade intelectual do pesquisador. O resultado é um texto que você não consegue defender em uma banca.',
+   fb_action:'Liste as tarefas em que usou ou planeja usar IA. Para cada uma: "Eu conseguiria defender esse trecho em uma banca sem a IA?" Se a resposta for não, reveja.',
+   rp:'Liste duas tarefas em que a IA pode genuinamente ajudar no seu projeto — e uma em que você precisa resistir à tentação de delegar.'},
+
+  {label:'Estação 5',chip:'chip-g',chipTxt:'coerência interna',
+   narr:'Problema, objetivos, metodologia e revisão precisam falar a mesma língua. Quando não falam, a banca percebe.',
+   q:'Qual desses projetos tem incoerência interna grave?',
+   opts:[
+    {l:'A',txt:'Problema: como professores constroem identidade? / Qualitativa / Entrevistas / Revisão narrativa.'},
+    {l:'B',txt:'Problema: qual a relação entre renda e desempenho em matemática? / Quantitativa / Questionário com 500 alunos / Revisão sistemática.'},
+    {l:'C',txt:'Problema: como indicadores de gestão se articulam com percepções dos diretores? / Mista / Survey + entrevistas / Revisão integrativa.'},
+    {l:'D',txt:'Problema: por que alunos abandonam a escola? / Quantitativa / Entrevistas com 8 jovens / Revisão sistemática com meta-análise.'}
+   ],correct:3,
+   fb_ok:'O projeto D tem incoerência grave: a pergunta ("por que") e a coleta (entrevistas com 8 jovens) são claramente qualitativas — mas a abordagem e a revisão são quantitativas. Tudo está em contradição.',
+   fb_no:'O projeto D é o problemático: pergunta e coleta qualitativas, abordagem e revisão quantitativas. Isso indica que o pesquisador não tem clareza sobre o paradigma da sua própria pesquisa.',
+   fb_action:'Faça o teste de coerência: coloque em uma linha sua pergunta, abordagem, estratégia de coleta e tipo de revisão. As quatro partes falam a mesma língua?',
+   rp:'Escreva em quatro linhas a estrutura do seu projeto: (1) pergunta, (2) abordagem, (3) coleta, (4) tipo de revisão. Releia e verifique: estão coerentes?'}
+];
+
+function g2ShowScreen(id){document.querySelectorAll('#g2 .game-screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
+function g2Render(){
+  const s=G2_STAGES[G2.ci];const tot=G2_STAGES.length;const answered=G2.answers[G2.ci]!==undefined;const chosen=G2.answers[G2.ci];
+  document.getElementById('g2-pbar').style.width=Math.round((G2.ci/tot)*100)+'%';
+  document.getElementById('g2-pcnt').textContent=(G2.ci+1)+' de '+tot;
+  document.getElementById('g2-clabel').textContent=s.label;
+  document.getElementById('g2-narr').textContent=s.narr;
+  const chip=document.getElementById('g2-chip');chip.className='chip '+s.chip;chip.textContent=s.chipTxt;
+  document.getElementById('g2-q').textContent=s.q;
+  const oa=document.getElementById('g2-opts');oa.innerHTML='';
+  s.opts.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='g-opt';
+    if(answered){if(i===s.correct)b.classList.add('right');else if(i===chosen)b.classList.add('wrong');}
+    b.setAttribute('data-l',o.l);b.textContent=o.txt;b.disabled=answered;
+    if(!answered)b.onclick=()=>g2Pick(i);oa.appendChild(b);
+  });
+  const fb=document.getElementById('g2-fb');
+  if(answered){const ok=chosen===s.correct;fb.className='g-fb on '+(ok?'ok':'no');document.getElementById('g2-fb-head').textContent=ok?'Isso mesmo':'Não exatamente';document.getElementById('g2-fb-body').textContent=ok?s.fb_ok:s.fb_no;document.getElementById('g2-fb-action').textContent=s.fb_action;}
+  else{fb.className='g-fb';}
+  const rp=document.getElementById('g2-reflect');
+  if(answered){rp.className='g-reflect on';document.getElementById('g2-rq').textContent=s.rp;document.getElementById('g2-rinp').value=G2.reflections[G2.ci]||'';}
+  else{rp.className='g-reflect';}
+  const nav=document.getElementById('g2-nav');nav.innerHTML='';
+  if(G2.ci>0){const b=document.createElement('button');b.className='g-btn';b.textContent='← Anterior';b.onclick=()=>{g2SaveRefl();G2.ci--;g2Render()};nav.appendChild(b);}
+  if(answered){const b=document.createElement('button');b.className='g-btn g-btn-p';b.textContent=G2.ci<tot-1?'Próxima estação →':'Ver resultado →';b.onclick=()=>{g2SaveRefl();G2.ci<tot-1?(G2.ci++,g2Render()):g2ShowEnd()};nav.appendChild(b);}
+}
+function g2Pick(i){if(G2.answers[G2.ci]!==undefined)return;G2.answers[G2.ci]=i;if(i===G2_STAGES[G2.ci].correct)G2.score++;g2Render();}
+function g2SaveRefl(){const v=document.getElementById('g2-rinp').value.trim();if(v)G2.reflections[G2.ci]=v;}
+function g2ShowEnd(){
+  g2SaveRefl();const s=G2.score,t=G2_STAGES.length;
+  document.getElementById('g2-score').textContent=s+'/'+t;
+  const msgs=['Releia os feedbacks — eles revelam os pontos que precisam de revisão.','Você captou parte das ideias. Os erros mostram onde há imprecisão metodológica.','Bom. Use as reflexões do diário na próxima orientação.','Você domina a lógica metodológica. Aplique esse rigor ao seu projeto.','Domínio completo. Seja igualmente rigoroso com cada escolha do seu projeto.'];
+  document.getElementById('g2-msg').textContent=msgs[Math.min(s,4)];
+  const da=document.getElementById('g2-diary');da.innerHTML='<p style="font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.6rem">Diário do projeto</p>';
+  G2_STAGES.forEach((st,i)=>{if(G2.reflections[i]){const d=document.createElement('div');d.className='g-diary-item';d.innerHTML='<p class="g-diary-lbl">'+st.label+'</p><p class="g-diary-txt">"'+G2.reflections[i]+'"</p>';da.appendChild(d);}});
+  const sa=document.getElementById('g2-sum');sa.innerHTML='';
+  G2_STAGES.forEach((st,i)=>{const ok=G2.answers[i]===st.correct;const d=document.createElement('div');d.className='g-sum-row';d.innerHTML='<div class="g-dot '+(ok?'g-dot-ok':'g-dot-no')+'"></div><span>'+st.label+'</span>';sa.appendChild(d);});
+  g2ShowScreen('g2s-end');
+}
+function g2Restart(){G2.ci=0;G2.answers=[];G2.reflections=[];G2.score=0;g2Render();g2ShowScreen('g2s-chap');}
+g2Render();
+
+// ════════════════════════════════════════════════════════
+// GAME 3 — Construindo o Projeto
+// ════════════════════════════════════════════════════════
+const G3={tema:'',ci:0,answers:[],reflections:[],score:0};
+const G3_STAGES=[
+  {label:'Estação 1 — o problema',title:'Onde nasce a pesquisa',chip:'chip-b',chipTxt:'problema',
+   narr:'Nem toda inquietação vira problema de pesquisa. A formulação define se há uma questão investigativa real.',
+   q:'Qual formulação é um problema de pesquisa válido para o mestrado?',
+   opts:[
+    {l:'A',txt:'A evasão escolar é séria e precisa ser estudada.'},
+    {l:'B',txt:'Quero entender por que alunos abandonam a escola.'},
+    {l:'C',txt:'Como as trajetórias de jovens em vulnerabilidade condicionam decisões de abandono escolar no ensino médio público?'},
+    {l:'D',txt:'Quais as taxas de evasão nas escolas públicas de SP entre 2018 e 2023?'}
+   ],correct:2,
+   fb_ok:'Essa formulação delimita sujeitos, contexto e implica campo e interpretação. Não pode ser respondida com questionário simples.',
+   fb_no:'A e B são vagas. D é quantitativa válida mas responde "quanto", não "como". Um problema de mestrado delimita sujeitos, contexto e método.',
+   fb_action:'Seu problema está formulado como pergunta? Ela implica sujeitos, contexto e um método de investigação?',
+   rp:'Escreva o problema do seu projeto como pergunta — a mais honesta e precisa que você conseguir agora.'},
+
+  {label:'Estação 2 — o objetivo',title:'O verbo que define tudo',chip:'chip-t',chipTxt:'objetivos',
+   narr:'Os verbos dos objetivos revelam (ou denunciam) a profundidade real do projeto.',
+   q:'Qual objetivo tem densidade epistemológica adequada para um mestrado sobre plataformas digitais no ensino remoto?',
+   opts:[
+    {l:'A',txt:'Identificar as plataformas usadas no ensino remoto das escolas municipais.'},
+    {l:'B',txt:'Desvelar como as práticas docentes foram reconfiguradas pelo uso de plataformas digitais à luz da mediação tecnológica.'},
+    {l:'C',txt:'Mostrar que o ensino remoto foi prejudicado pela falta de infraestrutura.'},
+    {l:'D',txt:'Pesquisar sobre o ensino remoto e as tecnologias usadas durante a pandemia.'}
+   ],correct:1,
+   fb_ok:'"Desvelar" situa-se no nível 4-5 de Bloom para pesquisa qualitativa, articula referencial teórico explícito, pressupõe interpretação e tem densidade epistemológica adequada ao mestrado.',
+   fb_no:'"Identificar" é nível 1. "Mostrar que" pressupõe conclusão antes da pesquisa. "Pesquisar sobre" não é objetivo. Use verbos como desvelar, investigar, contextualizar, interpretar, elucidar.',
+   fb_action:'Abra seu objetivo geral, sublinhe o verbo e verifique o nível de Bloom. Se estiver em 1, 2 ou 3, reformule com os verbos qualitativos do memorial.',
+   rp:'Escreva o objetivo geral do seu projeto e anote o nível de Bloom do verbo principal.'},
+
+  {label:'Estação 3 — a revisão',title:'Coerência metodológica',chip:'chip-b',chipTxt:'revisão',
+   narr:'O tipo de revisão não é independente do paradigma. A escolha errada cria inconsistência que a banca identificará.',
+   q:'Pesquisa qualitativa sobre construção de identidade profissional de professores iniciantes. Qual revisão é mais coerente?',
+   opts:[
+    {l:'A',txt:'Revisão sistemática com meta-análise — sintetiza evidências quantitativas disponíveis.'},
+    {l:'B',txt:'Revisão narrativa ou meta-etnográfica — sintetiza perspectivas qualitativas e produz insights interpretativos.'},
+    {l:'C',txt:'Revisão de estado da arte — para mapear indicadores de desempenho docente ao longo do tempo.'},
+    {l:'D',txt:'Qualquer revisão serve, desde que tenha muitos artigos recentes.'}
+   ],correct:1,
+   fb_ok:'Uma pesquisa sobre experiências e identidade exige revisão que dialogue com dados de linguagem. A revisão narrativa ou meta-etnográfica é coerente com a epistemologia interpretativista.',
+   fb_no:'A revisão sistemática é própria de pesquisas quantitativas. Para pesquisa qualitativa sobre experiências, essa escolha cria inconsistência metodológica grave.',
+   fb_action:'Qual tipo de revisão você planeja fazer? Ela é coerente com sua abordagem qualitativa, quantitativa ou mista?',
+   rp:'Qual tipo de revisão faz mais sentido para o seu projeto e por quê? Duas ou três frases.'},
+
+  {label:'Estação 4 — a IA',title:'Onde a IA entra e onde ela para',chip:'chip-p',chipTxt:'IA e autoria',
+   narr:'Usar IA é competência. Mas exige saber o que ela faz bem e o que só o pesquisador pode fazer.',
+   q:'Fase de revisão de literatura. Para qual tarefa o uso de IA é mais adequado?',
+   opts:[
+    {l:'A',txt:'Pedir à IA que escreva os parágrafos de fundamentação teórica.'},
+    {l:'B',txt:'Usar a IA para mapear autores citados e organizar fontes por temática — depois você lê e sintetiza.'},
+    {l:'C',txt:'Pedir à IA que avalie se o referencial teórico é suficiente.'},
+    {l:'D',txt:'Copiar o resumo que a IA gerou sobre um artigo sem ler o original.'}
+   ],correct:1,
+   fb_ok:'Mapear e organizar: IA. Ler, selecionar, interpretar, sintetizar, argumentar: pesquisador. Essa divisão constitui autoria legítima.',
+   fb_no:'As opções A, C e D transferem decisões intelectuais para a IA. O resultado é um texto que você não consegue defender em uma banca sem a IA.',
+   fb_action:'Liste as tarefas em que usou IA no seu projeto. Para cada uma: "Consigo defender isso em uma banca sem a IA?"',
+   rp:'Duas tarefas em que a IA pode genuinamente ajudar no seu projeto — e uma em que você precisa resistir à tentação de delegar.'},
+
+  {label:'Estação 5 — a coerência',title:'Tudo junto e coerente',chip:'chip-g',chipTxt:'coerência',
+   narr:'Problema, objetivos, metodologia e revisão precisam falar a mesma língua. Quando não falam, a banca percebe.',
+   q:'Qual projeto tem incoerência interna grave?',
+   opts:[
+    {l:'A',txt:'Problema: como professores constroem identidade? / Qualitativa / Entrevistas / Revisão narrativa.'},
+    {l:'B',txt:'Problema: relação entre renda e desempenho? / Quantitativa / Questionário 500 alunos / Revisão sistemática.'},
+    {l:'C',txt:'Problema: como indicadores se articulam com percepções? / Mista / Survey + entrevistas / Revisão integrativa.'},
+    {l:'D',txt:'Problema: por que alunos abandonam a escola? / Quantitativa / Entrevistas com 8 jovens / Revisão sistemática.'}
+   ],correct:3,
+   fb_ok:'O projeto D tem incoerência grave: pergunta e coleta são qualitativas, mas a abordagem declarada e a revisão são quantitativas. O pesquisador não tem clareza sobre o paradigma do próprio projeto.',
+   fb_no:'O projeto D é o problemático: pergunta qualitativa, coleta qualitativa, mas abordagem e revisão quantitativas. Tudo em contradição.',
+   fb_action:'Faça o teste de coerência: sua pergunta, abordagem, coleta e tipo de revisão falam a mesma língua?',
+   rp:'Escreva em quatro linhas: (1) sua pergunta, (2) abordagem, (3) como vai coletar, (4) tipo de revisão. Verifique: estão coerentes?'}
+];
+
+function g3ShowScreen(id){document.querySelectorAll('#g3 .game-screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
+function g3Start(){const t=document.getElementById('g3-tema').value.trim();if(!t){document.getElementById('g3-tema').focus();return;}G3.tema=t;G3.ci=0;g3Render();g3ShowScreen('g3s-chap');}
+function g3Render(){
+  const s=G3_STAGES[G3.ci];const tot=G3_STAGES.length;const answered=G3.answers[G3.ci]!==undefined;const chosen=G3.answers[G3.ci];
+  document.getElementById('g3-pbar').style.width=Math.round((G3.ci/tot)*100)+'%';
+  document.getElementById('g3-pcnt').textContent=(G3.ci+1)+' de '+tot;
+  document.getElementById('g3-clabel').textContent=s.label;
+  document.getElementById('g3-title').textContent=s.title;
+  document.getElementById('g3-narr').textContent=s.narr;
+  const chip=document.getElementById('g3-chip');chip.className='chip '+s.chip;chip.textContent=s.chipTxt;
+  document.getElementById('g3-q').textContent=s.q;
+  const oa=document.getElementById('g3-opts');oa.innerHTML='';
+  s.opts.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='g-opt';
+    if(answered){if(i===s.correct)b.classList.add('right');else if(i===chosen)b.classList.add('wrong');}
+    b.setAttribute('data-l',o.l);b.textContent=o.txt;b.disabled=answered;
+    if(!answered)b.onclick=()=>g3Pick(i);oa.appendChild(b);
+  });
+  const fb=document.getElementById('g3-fb');
+  if(answered){const ok=chosen===s.correct;fb.className='g-fb on '+(ok?'ok':'no');document.getElementById('g3-fb-head').textContent=ok?'Correto':'Não exatamente';document.getElementById('g3-fb-body').textContent=ok?s.fb_ok:s.fb_no;document.getElementById('g3-fb-action').textContent=s.fb_action;}
+  else fb.className='g-fb';
+  const rp=document.getElementById('g3-reflect');
+  if(answered){rp.className='g-reflect on';document.getElementById('g3-rq').textContent=s.rp;document.getElementById('g3-rinp').value=G3.reflections[G3.ci]||'';}
+  else rp.className='g-reflect';
+  const nav=document.getElementById('g3-nav');nav.innerHTML='';
+  if(G3.ci>0){const b=document.createElement('button');b.className='g-btn';b.textContent='← Anterior';b.onclick=()=>{g3SaveRefl();G3.ci--;g3Render()};nav.appendChild(b);}
+  if(answered){const b=document.createElement('button');b.className='g-btn g-btn-p';b.textContent=G3.ci<tot-1?'Próxima estação →':'Ver diário →';b.onclick=()=>{g3SaveRefl();G3.ci<tot-1?(G3.ci++,g3Render()):g3ShowEnd()};nav.appendChild(b);}
+}
+function g3Pick(i){if(G3.answers[G3.ci]!==undefined)return;G3.answers[G3.ci]=i;if(i===G3_STAGES[G3.ci].correct)G3.score++;g3Render();}
+function g3SaveRefl(){const v=document.getElementById('g3-rinp').value.trim();if(v)G3.reflections[G3.ci]=v;}
+function g3ShowEnd(){
+  g3SaveRefl();const s=G3.score,t=G3_STAGES.length;
+  document.getElementById('g3-score').textContent=s+'/'+t;
+  const msgs=['Cada erro é uma clareza nova. Releia os feedbacks e leve para a orientação.','Você captou parte das ideias. Os erros mostram onde há imprecisão metodológica.','Bom desempenho. Use as reflexões do diário como base para a próxima orientação.','Seu projeto tem base sólida. Afine os verbos e verifique a coerência.','Excelente. Aplique esse rigor a cada escolha do seu projeto.'];
+  document.getElementById('g3-msg').textContent=msgs[Math.min(s,4)];
+  const nexts={0:'Reveja os feedbacks e leve o diário para a orientação. Use o Prompt 3 para verificar coerência com a IA.',1:'Use o prompt de verificação de coerência — cole seu problema, objetivos e abordagem e peça à IA que identifique inconsistências.',2:'Traga a estrutura do projeto — problema, objetivos, abordagem e revisão — para uma revisão conjunta com o orientador.',3:'Afine os objetivos com os verbos certos de Bloom e verifique se o tipo de revisão é coerente com sua epistemologia.',4:'Use o Prompt 4 de simulação de banca. Se você conseguir responder com segurança, está no caminho certo.'};
+  document.getElementById('g3-next').textContent=nexts[Math.min(s,4)];
+  const da=document.getElementById('g3-diary');da.innerHTML='<p style="font-size:11px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.6rem">Diário do projeto — '+G3.tema+'</p>';
+  G3_STAGES.forEach((st,i)=>{if(G3.reflections[i]){const d=document.createElement('div');d.className='g-diary-item';d.innerHTML='<p class="g-diary-lbl">'+st.label+'</p><p class="g-diary-txt">"'+G3.reflections[i]+'"</p>';da.appendChild(d);}});
+  const sa=document.getElementById('g3-sum');sa.innerHTML='';
+  G3_STAGES.forEach((st,i)=>{const ok=G3.answers[i]===st.correct;const d=document.createElement('div');d.className='g-sum-row';d.innerHTML='<div class="g-dot '+(ok?'g-dot-ok':'g-dot-no')+'"></div><span>'+st.label+' — '+st.title+'</span>';sa.appendChild(d);});
+  g3ShowScreen('g3s-end');
+}
+function g3Restart(){G3.tema='';G3.ci=0;G3.answers=[];G3.reflections=[];G3.score=0;document.getElementById('g3-tema').value='';g3ShowScreen('g3s0');}
+
+// ════════════════════════════════════════════════════════
+// GAME 4 — Quiz da Aula
+// ════════════════════════════════════════════════════════
+const G4={ci:0,answers:[],score:0};
+const G4_QS=[
+  {chip:'chip-b',chipTxt:'profundidade',q:'Como saber se meu projeto tem profundidade de mestrado?',
+   opts:[{l:'A',txt:'Pelo número de referências e pelo tamanho do texto.'},{l:'B',txt:'Pelos verbos dos objetivos: "identificar" e "descrever" estão nos níveis 1–2 de Bloom — aquém do mestrado. Use investigar, desvelar, contextualizar, interpretar.'},{l:'C',txt:'Pela aprovação do orientador.'},{l:'D',txt:'Pelo tema: temas complexos garantem profundidade.'}],correct:1,
+   fb_ok:'Os verbos dos objetivos são o termômetro mais honesto. "Identificar" e "descrever" são níveis 1 e 2. Um mestrado pede "investigar", "desvelar", "contextualizar", "interpretar" — níveis 4 e 5.',
+   fb_no:'Não é o tamanho nem o tema que define profundidade — é o nível cognitivo exigido pelos objetivos. Os verbos revelam (ou traem) o que você realmente se propõe a fazer.',
+   fb_action:'Abra seus objetivos e sublinhe os verbos. Em qual nível de Bloom cada um está? Se a maioria estiver em 1 ou 2, reformule com os verbos qualitativos do memorial.'},
+
+  {chip:'chip-t',chipTxt:'IA e revisão',q:'Posso usar IA para escrever minha revisão de literatura?',
+   opts:[{l:'A',txt:'Sim, sem restrições — a IA produz textos de alta qualidade.'},{l:'B',txt:'Não — qualquer uso de IA é plágio.'},{l:'C',txt:'Sim, para mapear o campo e organizar fontes — mas a síntese analítica e a identificação de lacunas precisam ser suas.'},{l:'D',txt:'Apenas se o orientador autorizar cada etapa.'}],correct:2,
+   fb_ok:'A IA faz o trabalho braçal — busca, triagem, organização. A revisão de literatura não é reproduzir o que outros disseram: é demonstrar que você domina o campo e sabe onde está a lacuna.',
+   fb_no:'A questão não é proibir ou liberar — é saber o que a IA faz bem e o que só o pesquisador pode fazer. Identificar lacunas, sintetizar criticamente, construir o argumento: você.',
+   fb_action:'"Iara faz o trabalho braçal. Quem entrega conhecimento é o pesquisador." A autoria é sua desde que você seja o condutor intelectual do processo.'},
+
+  {chip:'chip-b',chipTxt:'tipos de revisão',q:'Qual é a diferença entre revisão como fundamentação e revisão como método?',
+   opts:[{l:'A',txt:'Não há diferença — toda revisão serve ao mesmo propósito.'},{l:'B',txt:'Quando é fundamentação, a literatura sustenta pesquisa empírica: você vai a campo. Quando é método, a literatura é a própria evidência e exige protocolo rigoroso, critérios explícitos e PRISMA.'},{l:'C',txt:'A revisão como método é mais simples: só reunir artigos cronologicamente.'},{l:'D',txt:'A diferença está no número de fontes consultadas.'}],correct:1,
+   fb_ok:'Quando é fundamentação, a literatura apoia sua pesquisa empírica. Quando é método, ela é os dados — e exige protocolo registrado, critérios auditáveis e rastreabilidade de cada decisão.',
+   fb_no:'A diferença é profunda: em um caso a literatura serve de base; no outro, ela é a evidência. Isso muda completamente o rigor exigido e a forma de relatar o processo.',
+   fb_action:'Se você vai fazer revisão como método, precisa de protocolo antes de começar. Sem ele, o que você faz é revisão narrativa — que tem outro propósito.'},
+
+  {chip:'chip-p',chipTxt:'alucinação',q:'A IA alucina muito. Como confiar nela para pesquisa acadêmica?',
+   opts:[{l:'A',txt:'Não se pode confiar — o risco torna a IA inutilizável para fins acadêmicos.'},{l:'B',txt:'Confie plenamente: os modelos recentes superaram o problema.'},{l:'C',txt:'O antídoto não é evitar a IA, mas dominar o assunto. Só quem conhece o campo consegue revisar criticamente o que ela produziu.'},{l:'D',txt:'Use apenas ferramentas pagas — alucinam menos.'}],correct:2,
+   fb_ok:'A alucinação é estrutural — nasce do algoritmo que busca respostas plausíveis quando não encontra a exata. O antídoto é conhecimento: só quem domina o campo percebe quando a IA erra.',
+   fb_no:'"Se eu reviso sem saber do assunto, que garantia tenho de que minha análise crítica é realmente crítica?" A IA amplifica seu conhecimento — não substitui a necessidade de tê-lo.',
+   fb_action:'Toda saída da IA precisa passar pela sua revisão crítica. Se você não domina o tema, não consegue perceber quando a IA inventa uma referência ou distorce um argumento.'},
+
+  {chip:'chip-g',chipTxt:'autoria',q:'Se uso IA para organizar e revisar o texto da minha pesquisa, ainda sou o autor?',
+   opts:[{l:'A',txt:'Não — qualquer uso de IA transfere automaticamente a autoria.'},{l:'B',txt:'Sim, sempre — a IA é apenas uma ferramenta.'},{l:'C',txt:'Sim, desde que você seja o condutor intelectual: define a pergunta, revisa o conteúdo, reescreve partes e assume responsabilidade por cada palavra.'},{l:'D',txt:'Depende exclusivamente da política da instituição.'}],correct:2,
+   fb_ok:'A autoria não é sobre quem digitou — é sobre quem pensa, decide e responde pelo conhecimento produzido. Usar IA para organizar ideias não elimina a autoria se você mantém o comando epistêmico.',
+   fb_no:'O que define autoria é a responsabilidade intelectual: quem formulou o problema, conduziu o raciocínio, revisou criticamente e responde pelo resultado. Isso pode coexistir com o uso de IA.',
+   fb_action:'"A autoria é minha, desde que seja eu a condicionadora dessa inteligência artificial." Copiar o output sem revisão é outra coisa — e todos os professores sabem reconhecer.'}
+];
+
+function g4ShowScreen(id){document.querySelectorAll('#g4 .game-screen').forEach(s=>s.classList.remove('on'));document.getElementById(id).classList.add('on');}
+function g4Render(){
+  const q=G4_QS[G4.ci];const tot=G4_QS.length;const answered=G4.answers[G4.ci]!==undefined;const chosen=G4.answers[G4.ci];
+  document.getElementById('g4-pbar').style.width=Math.round((G4.ci/tot)*100)+'%';
+  document.getElementById('g4-pcnt').textContent=(G4.ci+1)+' de '+tot;
+  const chip=document.getElementById('g4-chip');chip.className='chip '+q.chip;chip.textContent=q.chipTxt;
+  document.getElementById('g4-q').textContent=q.q;
+  const oa=document.getElementById('g4-opts');oa.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='g-opt';
+    if(answered){if(i===q.correct)b.classList.add('right');else if(i===chosen)b.classList.add('wrong');}
+    b.setAttribute('data-l',o.l);b.textContent=o.txt;b.disabled=answered;
+    if(!answered)b.onclick=()=>g4Pick(i);oa.appendChild(b);
+  });
+  const fb=document.getElementById('g4-fb');
+  if(answered){const ok=chosen===q.correct;fb.className='g-fb on '+(ok?'ok':'no');document.getElementById('g4-fb-head').textContent=ok?'Isso mesmo':'Não exatamente';document.getElementById('g4-fb-body').textContent=ok?q.fb_ok:q.fb_no;document.getElementById('g4-fb-action').textContent=q.fb_action;}
+  else fb.className='g-fb';
+  const nav=document.getElementById('g4-nav');nav.innerHTML='';
+  if(G4.ci>0){const b=document.createElement('button');b.className='g-btn';b.textContent='← Anterior';b.onclick=()=>{G4.ci--;g4Render()};nav.appendChild(b);}
+  if(answered){const b=document.createElement('button');b.className='g-btn g-btn-p';b.textContent=G4.ci<tot-1?'Próxima →':'Ver resultado →';b.onclick=()=>{G4.ci<tot-1?(G4.ci++,g4Render()):g4ShowEnd()};nav.appendChild(b);}
+}
+function g4Pick(i){if(G4.answers[G4.ci]!==undefined)return;G4.answers[G4.ci]=i;if(i===G4_QS[G4.ci].correct)G4.score++;g4Render();}
+function g4ShowEnd(){
+  const s=G4.score,t=G4_QS.length;
+  document.getElementById('g4-score').textContent=s+'/'+t;
+  const msgs=['Releia os feedbacks com atenção — eles contêm o essencial para o seu projeto.','Você captou parte do que a aula propôs. Os erros mostram nuances importantes.','Bom desempenho. Os insights das questões certas têm detalhes que valem reler.','Você está alinhado com as ideias centrais. Aprofunde a conexão entre paradigma, revisão e verbos.','Excelente. Você domina as ideias desta aula. Aplique esse olhar diretamente ao seu projeto.'];
+  document.getElementById('g4-msg').textContent=msgs[Math.min(s,4)];
+  const sa=document.getElementById('g4-sum');sa.innerHTML='';
+  G4_QS.forEach((q,i)=>{const ok=G4.answers[i]===q.correct;const d=document.createElement('div');d.className='g-sum-row';d.innerHTML='<div class="g-dot '+(ok?'g-dot-ok':'g-dot-no')+'"></div><span>'+q.q+'</span>';sa.appendChild(d);});
+  g4ShowScreen('g4s-end');
+}
+function g4Restart(){G4.ci=0;G4.answers=[];G4.score=0;g4Render();g4ShowScreen('g4s-quiz');}
+g4Render();
+</script>
+</body>
+</html>
